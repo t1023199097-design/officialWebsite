@@ -8,12 +8,14 @@ out/
 dist/
 coverage/
 target/
-.m2repo/
-.omx/
-var/
 .mvn/
 *.log
 .env
 .env.local
 !.env.example
 !.env.local.example
+
+.m2repo/
+.omx/
+var/
+
