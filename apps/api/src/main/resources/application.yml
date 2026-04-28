@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:beefintech_platform}?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: ${DB_USERNAME:beefintech}
+    password: ${DB_PASSWORD:beefintech123}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  jackson:
+    time-zone: Asia/Shanghai
+
+app:
+  admin:
+    username: ${ADMIN_USERNAME:admin}
+    password: ${ADMIN_PASSWORD:ChangeMe123!}
+    display-name: ${ADMIN_DISPLAY_NAME:Platform Admin}
+  web:
+    allowed-origins: ${WEB_ALLOWED_ORIGINS:http://localhost:3000,http://127.0.0.1:3000}
+  storage:
+    object-dir: ${OBJECT_STORAGE_DIR:./var/storage}
+
+server:
+  port: ${SERVER_PORT:8080}

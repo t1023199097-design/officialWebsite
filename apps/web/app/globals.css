@@ -1,0 +1,345 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap");
+
+:root {
+  --bg: #f4efe6;
+  --paper: rgba(255, 250, 242, 0.86);
+  --ink: #1c1b19;
+  --muted: #5e5a53;
+  --accent: #b6612a;
+  --accent-soft: #d5a06f;
+  --line: rgba(28, 27, 25, 0.12);
+  --shadow: 0 24px 80px rgba(73, 51, 28, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(182, 97, 42, 0.24), transparent 28%),
+    linear-gradient(135deg, #f4efe6 0%, #f0e5d4 45%, #ede6dc 100%);
+  color: var(--ink);
+  font-family: "Manrope", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-shell {
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.site-header,
+.site-footer,
+.hero-grid,
+.section-grid,
+.page-hero,
+.module-section,
+.admin-shell,
+.narrative-card,
+.form-card,
+.admin-login-card,
+.table-card {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 18px 0 30px;
+}
+
+.brand-mark {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-kicker,
+.eyebrow,
+.pill {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.74rem;
+}
+
+.brand-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.9rem;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.site-nav a {
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+
+.site-nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.page-stack {
+  display: grid;
+  gap: 42px;
+  padding-bottom: 48px;
+}
+
+.hero-grid,
+.section-grid,
+.admin-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.hero-grid {
+  grid-template-columns: 1.4fr 0.9fr;
+  align-items: stretch;
+}
+
+.hero-copy h1,
+.page-hero h1,
+.admin-header h1 {
+  margin: 10px 0 16px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 0.92;
+}
+
+.lede,
+.hero-copy p,
+.page-hero p,
+.admin-header p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.primary-button,
+.secondary-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--ink);
+  padding: 14px 22px;
+  font-weight: 700;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.primary-button {
+  background: var(--ink);
+  color: #fff8ef;
+}
+
+.secondary-button {
+  background: transparent;
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+  transform: translateY(-2px);
+}
+
+.glass-card {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+.hero-panel,
+.section-card,
+.narrative-card,
+.form-card,
+.admin-login-card,
+.table-card {
+  padding: 28px;
+}
+
+.hero-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.metric-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px;
+}
+
+.metric-block strong {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.6rem;
+}
+
+.section-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.section-card h2,
+.section-card h3 {
+  margin-top: 14px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.module-section,
+.page-hero {
+  display: grid;
+  gap: 18px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.form-grid label,
+.admin-login-card label {
+  display: grid;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.full-span {
+  grid-column: 1 / -1;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 14px 16px;
+  font: inherit;
+  background: rgba(255, 255, 255, 0.66);
+}
+
+.status-message {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 16px;
+}
+
+.status-message.success {
+  background: rgba(80, 147, 105, 0.14);
+}
+
+.status-message.error {
+  background: rgba(179, 76, 50, 0.14);
+}
+
+.admin-shell {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+}
+
+.admin-sidebar {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: rgba(24, 22, 20, 0.92);
+  color: #f9efde;
+  padding: 26px;
+  display: grid;
+  align-content: start;
+  gap: 22px;
+}
+
+.admin-sidebar nav {
+  display: grid;
+  gap: 14px;
+}
+
+.admin-header {
+  margin-bottom: 22px;
+}
+
+.admin-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-footer {
+  padding: 36px 0 12px;
+  color: var(--muted);
+}
+
+.sidebar-note {
+  color: rgba(249, 239, 222, 0.72);
+  line-height: 1.7;
+}
+
+@media (max-width: 960px) {
+  .hero-grid,
+  .admin-shell,
+  .section-grid,
+  .admin-grid,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-copy h1,
+  .page-hero h1,
+  .admin-header h1 {
+    font-size: 3rem;
+  }
+}
