@@ -35,6 +35,18 @@ export const demoHomeContent = {
     status: "即時",
     signals: ["客戶資料", "保單更新", "保費提醒", "待處理個案", "介紹費流程"]
   },
+  heroModules: [
+    { icon: "info", title: "市場資訊", detail: "保司優惠與公司公告" },
+    { icon: "library", title: "產品庫", detail: "產品資料與官方文件" },
+    { icon: "compare", title: "產品對比", detail: "多產品方案清晰比較" },
+    { icon: "quote", title: "保費試算", detail: "快速取得產品報價" },
+    { icon: "plan", title: "計劃書", detail: "申請、生成與分享" },
+    { icon: "client", title: "客戶跟進", detail: "潛在客戶與活動記錄" },
+    { icon: "booking", title: "預約簽單", detail: "預約資料同步後台" },
+    { icon: "pipeline", title: "新單跟進", detail: "Pending 與狀態提醒" },
+    { icon: "policy", title: "保單服務", detail: "保單資料與續保提醒" },
+    { icon: "commission", title: "介紹費", detail: "帳單狀態與核對進度" }
+  ],
   trustLogos: ["經紀營運", "顧問 APP", "管理後台", "保司 API", "數據金庫"],
   metrics: [
     { value: "1,200+", label: "已投入使用的活躍用戶" },
@@ -156,7 +168,19 @@ const localizedHomeContent = {
       title: "待跟进流程",
       status: "即时",
       signals: ["客户资料", "保单更新", "保费提醒", "待处理个案", "介绍费流程"]
-    }
+    },
+    heroModules: [
+      { icon: "info", title: "市场资讯", detail: "保司优惠与公司公告" },
+      { icon: "library", title: "产品库", detail: "产品资料与官方文件" },
+      { icon: "compare", title: "产品对比", detail: "多产品方案清晰比较" },
+      { icon: "quote", title: "保费试算", detail: "快速取得产品报价" },
+      { icon: "plan", title: "计划书", detail: "申请、生成与分享" },
+      { icon: "client", title: "客户跟进", detail: "潜在客户与活动记录" },
+      { icon: "booking", title: "预约签单", detail: "预约资料同步后台" },
+      { icon: "pipeline", title: "新单跟进", detail: "Pending 与状态提醒" },
+      { icon: "policy", title: "保单服务", detail: "保单资料与续保提醒" },
+      { icon: "commission", title: "介绍费", detail: "账单状态与核对进度" }
+    ]
   },
   en: {
     ...demoHomeContent,
@@ -180,7 +204,19 @@ const localizedHomeContent = {
       title: "Pending workflows",
       status: "Live",
       signals: ["Client data", "Policy updates", "Premium reminders", "Pending cases", "Commission flow"]
-    }
+    },
+    heroModules: [
+      { icon: "info", title: "Market updates", detail: "Promotions and notices" },
+      { icon: "library", title: "Product library", detail: "Product files and documents" },
+      { icon: "compare", title: "Product compare", detail: "Clear multi-product views" },
+      { icon: "quote", title: "Premium quote", detail: "Faster client quotations" },
+      { icon: "plan", title: "Proposal", detail: "Request, generate and share" },
+      { icon: "client", title: "Client follow-up", detail: "Prospects and activity records" },
+      { icon: "booking", title: "Booking", detail: "Appointments synced to Admin" },
+      { icon: "pipeline", title: "New business", detail: "Pending and status reminders" },
+      { icon: "policy", title: "Policy service", detail: "Policies and renewal reminders" },
+      { icon: "commission", title: "Commission", detail: "Statements and reconciliation" }
+    ]
   }
 };
 

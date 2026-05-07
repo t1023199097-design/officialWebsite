@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { demoHomeContent } from "@/lib/site-content.mjs";
 
 const links = [
@@ -13,7 +14,9 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <Link className="brand" href="/">
-        <span className="brand-badge">LB</span>
+        <span className="brand-logo">
+          <Image alt="LifeBee logo" height={42} priority src="/brand/lifebee-logo.svg" width={42} />
+        </span>
         <span className="brand-title">LifeBee</span>
       </Link>
       <nav className="site-nav">

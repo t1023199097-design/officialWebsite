@@ -36,8 +36,8 @@ export default function HomePage({ searchParams }) {
             <span className="waterdrop waterdrop-secondary" />
             <span className="waterdrop waterdrop-glint" />
           </div>
-          <ProductMockup content={demoHomeContent} />
         </div>
+        <HeroFeatureScroller modules={demoHomeContent.heroModules} />
       </section>
 
       <section className="logo-strip" aria-label="LifeBee 能力背書">
@@ -147,47 +147,29 @@ export default function HomePage({ searchParams }) {
   );
 }
 
-function ProductMockup({ content }) {
+function HeroFeatureScroller({ modules }) {
+  const repeatedModules = [...modules, ...modules, ...modules, ...modules];
+
   return (
-    <div className="product-shell">
-      <div className="mock-header">
-        <span />
-        <span />
-        <span />
-        <strong>lifebee.app/admin</strong>
-      </div>
-      <div className="mock-body">
-        <aside className="mock-sidebar">
-          <span className="active-dot" />
-          <span />
-          <span />
-          <span />
-        </aside>
-        <div className="mock-main">
-          <div className="mock-title">
-            <div>
-              <small>{content.dashboard.small}</small>
-              <strong>{content.dashboard.title}</strong>
-            </div>
-            <span className="status-pill">{content.dashboard.status}</span>
-          </div>
-          <div className="signal-list">
-            {content.dashboard.signals.map((signal) => (
-              <div className="signal-row" key={signal}>
-                <b>✓</b>
-                <span>{signal}</span>
-                <i />
-              </div>
-            ))}
-          </div>
-          <div className="chart-panel">
-            <span />
-            <span />
-            <span />
-            <span />
-          </div>
-        </div>
+    <div className="hero-module-stage" aria-label="LifeBee 功能模塊展示">
+      <div className="hero-module-track">
+        {repeatedModules.map((item, index) => (
+          <article className="hero-module-card" key={`${item.title}-${index}`}>
+            <ModuleIcon type={item.icon} />
+            <strong>{item.title}</strong>
+            <span>{item.detail}</span>
+          </article>
+        ))}
       </div>
     </div>
+  );
+}
+
+function ModuleIcon({ type }) {
+  return (
+    <span className={`module-logo module-logo-${type}`} aria-hidden="true">
+      <i />
+      <b />
+    </span>
   );
 }
