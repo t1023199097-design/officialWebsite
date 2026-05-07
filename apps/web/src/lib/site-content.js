@@ -38,6 +38,11 @@ export const demoHomeContent = {
     { value: "300,000+", label: "已處理流程個案" },
     { value: "35%", label: "平均營運效率提升" }
   ],
+  pillarThemes: [
+    { key: "day", label: "專業藍", detail: "清晰可信的預設展示" },
+    { key: "gold", label: "暖金", detail: "成熟商務的價值表達" },
+    { key: "night", label: "夜間", detail: "科技演示與數據流感" }
+  ],
   workflow: {
     eyebrow: "一套流程，雙端協同",
     title: "一套平台連接外部理財顧問與內部營運團隊。",

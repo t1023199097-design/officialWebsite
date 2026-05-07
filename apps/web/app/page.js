@@ -42,13 +42,40 @@ export default function HomePage() {
         ))}
       </section>
 
-      <section className="stats-band">
-        {demoHomeContent.metrics.map((metric) => (
-          <div className="stat-card" key={metric.label}>
-            <strong>{metric.value}</strong>
-            <span>{metric.label}</span>
+      <section className="business-pillars business-pillars--day" aria-labelledby="business-pillars-title">
+        <div className="pillar-background" aria-hidden="true">
+          <span className="pillar-light-plane pillar-light-plane-one" />
+          <span className="pillar-light-plane pillar-light-plane-two" />
+          <span className="pillar-data-grid" />
+          <span className="pillar-data-lines" />
+        </div>
+        <div className="pillar-inner">
+          <div className="pillar-heading">
+            <p className="eyebrow">Insurance technology pillars</p>
+            <h2 id="business-pillars-title">保險科技服務支柱</h2>
+            <p>
+              以 LifeBee 的業務數據為主角，讓服務規模、資料能力、流程效率與營運提升在同一個演示區裡被看見。
+            </p>
           </div>
-        ))}
+          <div className="pillar-theme-row" aria-label="展示主題">
+            {demoHomeContent.pillarThemes.map((theme, index) => (
+              <span className={index === 0 ? "theme-chip is-active" : "theme-chip"} key={theme.key}>
+                <b>{theme.label}</b>
+                <small>{theme.detail}</small>
+              </span>
+            ))}
+          </div>
+          <div className="pillar-stats" aria-label="LifeBee 核心業務數據">
+            {demoHomeContent.metrics.map((metric, index) => (
+              <article className={index === 0 ? "pillar-stat is-active" : "pillar-stat"} key={metric.label}>
+                <span className="pillar-stat-index">0{index + 1}</span>
+                <strong>{metric.value}</strong>
+                <span>{metric.label}</span>
+              </article>
+            ))}
+            <span className="pillar-indicator" aria-hidden="true" />
+          </div>
+        </div>
       </section>
 
       <section className="split-section">

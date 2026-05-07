@@ -29,6 +29,11 @@ const assert = require("node:assert/strict");
     ["繁", "简", "EN"]
   );
   assert.equal(demoHomeContent.motion.gradientSpeed, "4.2s");
+  assert.deepEqual(
+    demoHomeContent.pillarThemes.map((theme) => theme.key),
+    ["day", "gold", "night"]
+  );
+  assert.equal(demoHomeContent.metrics.length, 4);
   console.log("module catalog assertions passed");
 })().catch((error) => {
   console.error(error);

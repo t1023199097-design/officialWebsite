@@ -83,3 +83,15 @@
 - 根据用户反馈，将 V2.0 从展开型方案整理为标准 Spec 需求文档格式，去除主动思考式表述，保留项目背景、官网定位、目标用户、核心价值、页面清单、页面内容规划、基础功能、适配要求、交付范围和验收标准。
 - 桌面交付文件：`/Users/zhidaoshijiejintou/Desktop/SPEC需求文档/官網項目需求文檔V2.0.md`。
 - 项目内归档文件：`docs/official-website-requirements-v2.0.md`。
+
+## 轮次 9：Stripe 动效参考转化为 LifeBee 静态视觉原型
+
+- 用户先要求读取 `docs/07-stripe-motion-reference.md`，并用非代码语言说明该版本设计方案。
+- AI 将文档中的 Stripe 首页参考拆解为 LifeBee 官网语境：把原本静态的统计数据区升级为“保险科技服务支柱”演示模块，重点展示服务规模、资料能力、流程效率与营运提升。
+- 用户随后要求“根据这个设计生成出一个静态页面效果看看”，AI 以【前端体验专家】角色处理，选择 P0 静态原型路线：不新增依赖、不引入 Three.js，先用现有 Next.js 页面结构与 CSS 渐变、数据线、光感背景完成可演示效果。
+- 关键取舍：保留金融科技官网的专业、可信和清晰信息层级，避免过度游戏化；默认采用“专业蓝”主题，同时预留“暖金”和“夜间”两个视觉标签，为后续交互切换做铺垫。
+- 产出结果：在首页新增“保险科技服务支柱”区块，包含主题标签、4 个业务指标、数据流背景、顶部高亮指示线和响应式布局。
+- 产出结果：补充首页 Hero、Logo strip、服务轮播、Bento 价值区和 CTA 相关样式，使当前 LifeBee 首页能作为完整静态展示页浏览。
+- 修改文件：`apps/web/app/page.js`、`apps/web/app/globals.css`、`apps/web/src/lib/site-content.js`、`apps/web/src/lib/module-catalog.test.js`。
+- 验证过程：执行 `npm run test:web`，内容数据测试通过；执行 `npm run build:web`，Next.js 生产构建通过。
+- 人工复核点：当前版本是静态视觉原型，主题标签和统计项尚未做真实点击切换；如果方向确认，下一步可抽成客户端组件并增加 active、hover 和 theme 状态交互。
