@@ -19,12 +19,9 @@ export const demoHomeContent = {
     sloganMain: "客戶至上，服務為先",
     sloganSub: "以科技力量擁抱世界",
     lead: [
-      "LifeBee 是面向保險經紀公司的",
-      "全流程數字化經營管理系統，",
-      "連接銷售 APP、Admin 後台、",
-      "產品資料、業務流程與佣金管理，",
-      "讓客戶、保單、新單到續保跟進",
-      "都更快、更清晰。"
+      "香港首家科創・香港保險展業全鏈條經紀業務管理系統(LifeBee)",
+      "LifeBee 是香港首家專註保險經紀全鏈路數字化的科創SaaS平台，由香港科學園入駐企業BeeFintech自主研發，深耕香港保險經紀行業近10年，是本地頭部保險中介數字化服務商。",
+      "平台同步推出PC管理端 + 手機移動端(APP)，全面覆蓋香港保險中介機構、經紀公司、獨立IFA及保險公司，服務網絡輻射香港、澳門、台灣及新加坡等亞太核心市場。產品由香港資深金融保險從業者與互聯網科技專才聯合打造，深度紮根香港保險行業痛點 —— 傳統流程碎片化、合規成本高、傭金結算低效、客戶管理松散、數據孤島嚴重，以“合規驅動、效率為王、數據賦能”為核心，搭建一體化智能保險經紀業務管理中台。"
     ],
     primaryCta: "預約演示",
     secondaryCta: "查看解決方案"
@@ -153,12 +150,9 @@ const localizedHomeContent = {
       sloganMain: "客户至上，服务为先",
       sloganSub: "以科技力量拥抱世界",
       lead: [
-        "LifeBee 是面向保险经纪公司的",
-        "全流程数字化经营管理系统，",
-        "连接销售 APP、Admin 后台、",
-        "产品资料、业务流程与佣金管理，",
-        "让客户、保单、新单到续保跟进",
-        "都更快、更清晰。"
+        "香港首家科创・香港保险展业全链条经纪业务管理系统(LifeBee)",
+        "LifeBee 是香港首家专注保险经纪全链路数字化的科创SaaS平台，由香港科学园入驻企业BeeFintech自主研发，深耕香港保险经纪行业近10年，是本地头部保险中介数字化服务商。",
+        "平台同步推出PC管理端 + 手机移动端(APP)，全面覆盖香港保险中介机构、经纪公司、独立IFA及保险公司，服务网络辐射香港、澳门、台湾及新加坡等亚太核心市场。产品由香港资深金融保险从业者与互联网科技专才联合打造，深度扎根香港保险行业痛点 —— 传统流程碎片化、合规成本高、佣金结算低效、客户管理松散、数据孤岛严重，以“合规驱动、效率为王、数据赋能”为核心，搭建一体化智能保险经纪业务管理中台。"
       ],
       primaryCta: "预约演示",
       secondaryCta: "查看解决方案"
@@ -190,11 +184,9 @@ const localizedHomeContent = {
       sloganMain: "Customer first, service first",
       sloganSub: "Embracing the world with technology",
       lead: [
-        "LifeBee is a full-process digital operations platform",
-        "for insurance brokerage teams,",
-        "connecting sales apps, Admin workflows,",
-        "product data, policy services and commission management",
-        "so every follow-up is clearer and faster."
+        "Hong Kong's first technology-driven full-chain brokerage business management system for insurance distribution (LifeBee)",
+        "LifeBee is a SaaS platform built for end-to-end digital operations in insurance brokerage. Independently developed by BeeFintech, a Hong Kong Science Park incubatee, it draws on nearly 10 years of experience in the Hong Kong insurance brokerage market and serves as a leading local digital service provider for insurance intermediaries.",
+        "The platform provides both a PC management portal and a mobile app, covering Hong Kong insurance intermediaries, brokerage firms, independent IFAs and insurers, with service reach across Hong Kong, Macau, Taiwan, Singapore and other key Asia-Pacific markets. Built by senior insurance professionals and internet technology specialists, LifeBee addresses fragmented workflows, high compliance costs, inefficient commission settlement, loose client management and data silos through an integrated intelligent business management platform driven by compliance, efficiency and data."
       ],
       primaryCta: "Book a demo",
       secondaryCta: "View solutions"

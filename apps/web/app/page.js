@@ -16,11 +16,13 @@ export default function HomePage({ searchParams }) {
             <span className="slogan-main">{demoHomeContent.hero.sloganMain}</span>
             <span className="slogan-sub">{demoHomeContent.hero.sloganSub}</span>
           </h1>
-          <p className="lede hero-lead">
-            {demoHomeContent.hero.lead.map((line) => (
-              <span key={line}>{line}</span>
+          <div className="lede hero-lead">
+            {demoHomeContent.hero.lead.map((line, index) => (
+              <p className={index === 0 ? "hero-lead-title" : ""} key={line}>
+                {line}
+              </p>
             ))}
-          </p>
+          </div>
           <div className="hero-actions">
             <Link className="primary-button" href={`/demo${languageSuffix}`}>
               {demoHomeContent.hero.primaryCta}

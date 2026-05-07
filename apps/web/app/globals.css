@@ -217,7 +217,32 @@ textarea {
 .hero-copy {
   position: relative;
   z-index: 4;
+  isolation: isolate;
   min-width: 0;
+}
+
+.hero-copy::before {
+  position: absolute;
+  inset: -24px auto -22px -26px;
+  z-index: -1;
+  width: min(960px, 58vw);
+  content: "";
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.5) 68%, rgba(255, 255, 255, 0.1) 100%),
+    linear-gradient(180deg, rgba(238, 249, 255, 0.34), rgba(255, 255, 255, 0.16));
+  box-shadow:
+    0 22px 64px rgba(17, 98, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px) saturate(1.08);
+  mask-image:
+    linear-gradient(90deg, #000 0%, #000 84%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(90deg, #000 0%, #000 84%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  -webkit-mask-composite: source-in;
 }
 
 .eyebrow {
@@ -245,8 +270,7 @@ p {
 }
 
 .slogan-main,
-.slogan-sub,
-.hero-lead span {
+.slogan-sub {
   display: block;
 }
 
@@ -278,15 +302,38 @@ p {
 }
 
 .hero-lead {
-  max-width: 720px;
-  font-size: 21px;
+  width: min(920px, 56vw);
+  max-width: none;
+  color: #102a4f;
+  font-size: 18px;
+  font-weight: 650;
+  line-height: 1.68;
+  text-wrap: pretty;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.86),
+    0 10px 28px rgba(255, 255, 255, 0.76);
+}
+
+.hero-lead p {
+  margin: 0;
+}
+
+.hero-lead p + p {
+  margin-top: 9px;
+}
+
+.hero-lead-title {
+  color: #071d3f;
+  font-size: 1.08em;
+  font-weight: 900;
+  line-height: 1.45;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-top: 34px;
+  margin-top: 26px;
 }
 
 .hero-visual {
@@ -1272,6 +1319,14 @@ td {
     overflow: hidden;
   }
 
+  .hero-copy::before {
+    inset: -18px -14px -18px -14px;
+    width: auto;
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4) 72%, rgba(255, 255, 255, 0.06) 100%),
+      linear-gradient(180deg, rgba(236, 248, 255, 0.3), rgba(255, 255, 255, 0.14));
+  }
+
   .hero-copy h1 {
     font-size: clamp(28px, 9vw, 34px);
     line-height: 1.04;
@@ -1286,8 +1341,13 @@ td {
   }
 
   .hero-lead {
-    font-size: 20px;
-    word-break: break-all;
+    font-size: 16px;
+    width: 100%;
+    word-break: normal;
+  }
+
+  .hero-lead-title {
+    font-size: 1.02em;
   }
 
   .hero-actions {
