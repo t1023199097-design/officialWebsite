@@ -1,28 +1,35 @@
 import Link from "next/link";
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/solutions", label: "Solutions" },
-  { href: "/about", label: "About" },
-  { href: "/demo", label: "Book Demo" },
+  { href: "/", label: "首頁" },
+  { href: "/solutions", label: "解決方案" },
+  { href: "/about", label: "關於我們" },
+  { href: "/demo", label: "聯絡我們" },
   { href: "/admin", label: "Admin" }
 ];
 
 export function SiteHeader() {
   return (
     <header className="site-header">
-      <div className="brand-mark">
-        <span className="brand-kicker">BeeFintech</span>
-        <span className="brand-title">Insurance Tech Platform</span>
-      </div>
+      <Link className="brand" href="/">
+        <span className="brand-badge">LB</span>
+        <span className="brand-title">LifeBee</span>
+      </Link>
       <nav className="site-nav">
         {links.map((link) => (
           <Link key={link.href} href={link.href}>
             {link.label}
           </Link>
         ))}
+        <Link className="nav-cta" href="/demo">
+          預約演示 <span aria-hidden="true">→</span>
+        </Link>
+        <div className="language-switch" aria-label="語言切換">
+          <button className="active" type="button">繁</button>
+          <button type="button">简</button>
+          <button type="button">EN</button>
+        </div>
       </nav>
     </header>
   );
 }
-

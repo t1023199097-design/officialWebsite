@@ -3,13 +3,13 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
 export const metadata = {
-  title: "BeeFintech Insurance Tech Platform",
-  description: "AI competition starter for a dynamic insurance technology web service platform."
+  title: "LifeBee by Beefintech",
+  description: "LifeBee 是面向香港保險經紀公司的數字化流程輔助工具。"
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="zh-CN">
+    <html lang="zh-Hant">
       <body>
         <div className="page-shell">
           <SiteHeader />
@@ -20,4 +20,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-

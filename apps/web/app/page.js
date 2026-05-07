@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { demoHomeContent } from "@/lib/site-content";
+import { demoHomeContent } from "@/lib/site-content.mjs";
 
 export default function HomePage() {
   const repeatedFeatures = [...demoHomeContent.serviceFeatures, ...demoHomeContent.serviceFeatures];

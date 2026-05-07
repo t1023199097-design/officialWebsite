@@ -2,7 +2,7 @@ const assert = require("node:assert/strict");
 
 (async () => {
   const { moduleCatalog, moduleCategories, getModuleBySlug } = await import("./module-catalog.mjs");
-  const { demoHomeContent } = await import("./site-content.js");
+  const { demoHomeContent } = await import("./site-content.mjs");
 
   assert.deepEqual(moduleCategories, ["content", "support", "tools"]);
   assert.equal(moduleCatalog.length, 3);

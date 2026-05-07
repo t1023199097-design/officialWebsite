@@ -95,3 +95,12 @@
 - 修改文件：`apps/web/app/page.js`、`apps/web/app/globals.css`、`apps/web/src/lib/site-content.js`、`apps/web/src/lib/module-catalog.test.js`。
 - 验证过程：执行 `npm run test:web`，内容数据测试通过；执行 `npm run build:web`，Next.js 生产构建通过。
 - 人工复核点：当前版本是静态视觉原型，主题标签和统计项尚未做真实点击切换；如果方向确认，下一步可抽成客户端组件并增加 active、hover 和 theme 状态交互。
+
+## 轮次 10：LifeBee 官网演示初稿落入 officialWebsite 与版本保留规则
+
+- 用户要求将此前在 `http://127.0.0.1:5173/` 预览的 LifeBee 官网设计，用代码还原到 `officialWebsite` 项目中，作为后续可持续迭代的官方项目页面。
+- AI 将首页视觉和内容迁移到 `apps/web` 的 Next.js 结构中，保留科技金融蓝主色、Hero 不规则球形动效、主副 Slogan、产品工作台示意、业务数据展示、Stripe 风格功能滑动展示、Bento 价值区和 CTA 模块。
+- 内容侧将 LifeBee 定位、Hero 文案、核心数据、工具与服务功能、解决方案价值等集中沉淀到 `apps/web/src/lib/site-content.mjs`，方便后续替换与维护。
+- 用户进一步明确版本管理要求：后续改动新版本页面时，必须保留旧版本页面，方便切换对比；每个版本需要有单独路由记录。
+- 版本管理初步约定：当前版本后续可保存为 `/versions/lifebee-v1`，并新增 `/versions` 作为版本索引入口；首页 `/` 仅指向当前最新版，不直接覆盖历史版本的独立路由。
+- 人工复核点：本轮先记录版本保留规则并提交现有演示初稿；版本索引页和独立版本路由将在用户确认后进入下一轮代码实现。
