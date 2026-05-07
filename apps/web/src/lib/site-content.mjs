@@ -1,10 +1,14 @@
 import { moduleCatalog } from "./module-catalog.mjs";
 
+const locales = [
+  { label: "繁", name: "繁體中文", code: "zh-Hant" },
+  { label: "简", name: "简体中文", code: "zh-Hans" },
+  { label: "EN", name: "English", code: "en" }
+];
+
 export const demoHomeContent = {
   locales: [
-    { label: "繁", name: "繁體中文" },
-    { label: "简", name: "简体中文" },
-    { label: "EN", name: "English" }
+    ...locales
   ],
   motion: {
     gradientSpeed: "4.2s",
@@ -15,11 +19,11 @@ export const demoHomeContent = {
     sloganMain: "客戶至上，服務為先",
     sloganSub: "以科技力量擁抱世界",
     lead: [
-      "LifeBee 是香港保險經紀團隊的",
-      "一站式流程輔助工具，",
-      "連接 APP、Admin、AI Robot",
-      "與安全數據隔離，",
-      "讓客戶、保單、文件到續保跟進",
+      "LifeBee 是面向保險經紀公司的",
+      "全流程數字化經營管理系統，",
+      "連接銷售 APP、Admin 後台、",
+      "產品資料、業務流程與佣金管理，",
+      "讓客戶、保單、新單到續保跟進",
       "都更快、更清晰。"
     ],
     primaryCta: "預約演示",
@@ -126,6 +130,67 @@ export const demoHomeContent = {
     button: "聯絡 LifeBee"
   }
 };
+
+const localizedHomeContent = {
+  "zh-Hant": demoHomeContent,
+  "zh-Hans": {
+    ...demoHomeContent,
+    hero: {
+      ...demoHomeContent.hero,
+      eyebrow: "Beefintech 旗下 LifeBee",
+      sloganMain: "客户至上，服务为先",
+      sloganSub: "以科技力量拥抱世界",
+      lead: [
+        "LifeBee 是面向保险经纪公司的",
+        "全流程数字化经营管理系统，",
+        "连接销售 APP、Admin 后台、",
+        "产品资料、业务流程与佣金管理，",
+        "让客户、保单、新单到续保跟进",
+        "都更快、更清晰。"
+      ],
+      primaryCta: "预约演示",
+      secondaryCta: "查看解决方案"
+    },
+    dashboard: {
+      small: "运营工作台",
+      title: "待跟进流程",
+      status: "即时",
+      signals: ["客户资料", "保单更新", "保费提醒", "待处理个案", "介绍费流程"]
+    }
+  },
+  en: {
+    ...demoHomeContent,
+    hero: {
+      ...demoHomeContent.hero,
+      eyebrow: "LifeBee by Beefintech",
+      sloganMain: "Customer first, service first",
+      sloganSub: "Embracing the world with technology",
+      lead: [
+        "LifeBee is a full-process digital operations platform",
+        "for insurance brokerage teams,",
+        "connecting sales apps, Admin workflows,",
+        "product data, policy services and commission management",
+        "so every follow-up is clearer and faster."
+      ],
+      primaryCta: "Book a demo",
+      secondaryCta: "View solutions"
+    },
+    dashboard: {
+      small: "Operations desk",
+      title: "Pending workflows",
+      status: "Live",
+      signals: ["Client data", "Policy updates", "Premium reminders", "Pending cases", "Commission flow"]
+    }
+  }
+};
+
+export function normalizeLocale(locale) {
+  return locales.some((item) => item.code === locale) ? locale : "zh-Hant";
+}
+
+export function getDemoHomeContent(locale = "zh-Hant") {
+  return localizedHomeContent[normalizeLocale(locale)];
+}
 
 export const heroMetrics = [
   { label: "行业解决方案", value: "03" },

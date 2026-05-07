@@ -1,7 +1,10 @@
 import Link from "next/link";
-import { demoHomeContent } from "@/lib/site-content.mjs";
+import { getDemoHomeContent, normalizeLocale } from "@/lib/site-content.mjs";
 
-export default function HomePage() {
+export default function HomePage({ searchParams }) {
+  const locale = normalizeLocale(searchParams?.lang);
+  const demoHomeContent = getDemoHomeContent(locale);
+  const languageSuffix = locale === "zh-Hant" ? "" : `?lang=${locale}`;
   const repeatedFeatures = [...demoHomeContent.serviceFeatures, ...demoHomeContent.serviceFeatures];
 
   return (
@@ -10,10 +13,7 @@ export default function HomePage() {
         <div className="hero-copy">
           <p className="eyebrow">{demoHomeContent.hero.eyebrow}</p>
           <h1>
-            <span className="slogan-main">
-              <span>客戶至上，</span>
-              <span>服務為先</span>
-            </span>
+            <span className="slogan-main">{demoHomeContent.hero.sloganMain}</span>
             <span className="slogan-sub">{demoHomeContent.hero.sloganSub}</span>
           </h1>
           <p className="lede hero-lead">
@@ -22,17 +22,21 @@ export default function HomePage() {
             ))}
           </p>
           <div className="hero-actions">
-            <Link className="primary-button" href="/demo">
+            <Link className="primary-button" href={`/demo${languageSuffix}`}>
               {demoHomeContent.hero.primaryCta}
             </Link>
-            <Link className="secondary-button" href="/solutions">
+            <Link className="secondary-button" href={`/solutions${languageSuffix}`}>
               {demoHomeContent.hero.secondaryCta}
             </Link>
           </div>
         </div>
         <div className="hero-visual" aria-label="LifeBee 產品工作台示意">
-          <div className="gradient-ribbon" />
-          <ProductMockup />
+          <div className="waterdrop-field" aria-hidden="true">
+            <span className="waterdrop waterdrop-main" />
+            <span className="waterdrop waterdrop-secondary" />
+            <span className="waterdrop waterdrop-glint" />
+          </div>
+          <ProductMockup content={demoHomeContent} />
         </div>
       </section>
 
@@ -135,7 +139,7 @@ export default function HomePage() {
           <h2>{demoHomeContent.cta.title}</h2>
           <p>{demoHomeContent.cta.description}</p>
         </div>
-        <Link className="primary-button" href="/demo">
+        <Link className="primary-button" href={`/demo${languageSuffix}`}>
           {demoHomeContent.cta.button}
         </Link>
       </section>
@@ -143,7 +147,7 @@ export default function HomePage() {
   );
 }
 
-function ProductMockup() {
+function ProductMockup({ content }) {
   return (
     <div className="product-shell">
       <div className="mock-header">
@@ -162,13 +166,13 @@ function ProductMockup() {
         <div className="mock-main">
           <div className="mock-title">
             <div>
-              <small>{demoHomeContent.dashboard.small}</small>
-              <strong>{demoHomeContent.dashboard.title}</strong>
+              <small>{content.dashboard.small}</small>
+              <strong>{content.dashboard.title}</strong>
             </div>
-            <span className="status-pill">{demoHomeContent.dashboard.status}</span>
+            <span className="status-pill">{content.dashboard.status}</span>
           </div>
           <div className="signal-list">
-            {demoHomeContent.dashboard.signals.map((signal) => (
+            {content.dashboard.signals.map((signal) => (
               <div className="signal-row" key={signal}>
                 <b>✓</b>
                 <span>{signal}</span>

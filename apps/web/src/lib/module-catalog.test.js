@@ -2,7 +2,7 @@ const assert = require("node:assert/strict");
 
 (async () => {
   const { moduleCatalog, moduleCategories, getModuleBySlug } = await import("./module-catalog.mjs");
-  const { demoHomeContent } = await import("./site-content.mjs");
+  const { demoHomeContent, getDemoHomeContent } = await import("./site-content.mjs");
 
   assert.deepEqual(moduleCategories, ["content", "support", "tools"]);
   assert.equal(moduleCatalog.length, 3);
@@ -28,6 +28,10 @@ const assert = require("node:assert/strict");
     demoHomeContent.locales.map((locale) => locale.label),
     ["繁", "简", "EN"]
   );
+  assert.equal(getDemoHomeContent("zh-Hant").hero.sloganMain, "客戶至上，服務為先");
+  assert.equal(getDemoHomeContent("zh-Hans").hero.sloganMain, "客户至上，服务为先");
+  assert.equal(getDemoHomeContent("en").hero.sloganMain, "Customer first, service first");
+  assert.equal(getDemoHomeContent("missing").hero.sloganMain, demoHomeContent.hero.sloganMain);
   assert.equal(demoHomeContent.motion.gradientSpeed, "4.2s");
   assert.deepEqual(
     demoHomeContent.pillarThemes.map((theme) => theme.key),

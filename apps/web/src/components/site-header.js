@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { demoHomeContent } from "@/lib/site-content.mjs";
 
 const links = [
   { href: "/", label: "首頁" },
@@ -25,9 +26,16 @@ export function SiteHeader() {
           預約演示 <span aria-hidden="true">→</span>
         </Link>
         <div className="language-switch" aria-label="語言切換">
-          <button className="active" type="button">繁</button>
-          <button type="button">简</button>
-          <button type="button">EN</button>
+          {demoHomeContent.locales.map((locale, index) => (
+            <Link
+              className={index === 0 ? "default-locale" : ""}
+              href={index === 0 ? "/" : `/?lang=${locale.code}`}
+              key={locale.code}
+              title={locale.name}
+            >
+              {locale.label}
+            </Link>
+          ))}
         </div>
       </nav>
     </header>
