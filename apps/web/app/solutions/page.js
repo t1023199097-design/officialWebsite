@@ -1,4 +1,4 @@
-import { moduleHighlights, solutionCards } from "@/lib/site-content";
+import { moduleHighlights, solutionCards } from "@/lib/site-content.mjs";
 
 export default function SolutionsPage() {
   return (

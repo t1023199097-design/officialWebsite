@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { adminNavigation } from "@/lib/site-content";
+import { adminNavigation } from "@/lib/site-content.mjs";
 
 export function AdminShell({ title, intro, children }) {
   return (
