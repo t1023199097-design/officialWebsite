@@ -2,15 +2,25 @@
 # GitHub Action `milestone-check.yml` 会自动校验本文件
 
 team_id: team-02               # 系统分配，请勿修改（如 team-01）
-team_number: ""                # 中文组号，如 "一组"
-team_name: ""                  # 队员自取的队名，例如 "蜂巢"
-pioneer_lead: ""               # 队长姓名（必填）
+team_number: "二组"                # 中文组号，如 "一组"
+team_name: "AI主理人写的都队"                  # 队员自取的队名，例如 "蜂巢"
+pioneer_lead: "尚笑宇"               # 队长姓名（必填）
 
 members:
-  - name: ""                   # 必填：姓名
-    office: ""                 # 必填：深圳 / 长沙 / 呼和浩特
-    dingtalk_handle: ""        # 选填：钉钉 ID（用于话题圈 sync）
-    github_username: ""        # 必填：GitHub 用户名（须已加入 lifebee-vibe-coding org）
+  - name: "尚笑宇"                   # 必填：姓名
+    office: "呼和浩特"                 # 必填：深圳 / 长沙 / 呼和浩特
+    dingtalk_handle: "1ef_8xyqu1v9wi"        # 选填：钉钉 ID（用于话题圈 sync）
+    github_username: "userShophia"        # 必填：GitHub 用户名（须已加入 lifebee-vibe-coding org）
+  # 复制本块到 3-4 行（每队 3-4 人）
+  - name: "谭杰文"                   # 必填：姓名
+    office: "深圳"                 # 必填：深圳 / 长沙 / 呼和浩特
+    dingtalk_handle: "rzm_5jl24o9yy"        # 选填：钉钉 ID（用于话题圈 sync）
+    github_username: "t1023199097-design"        # 必填：GitHub 用户名（须已加入 lifebee-vibe-coding org）
+  # 复制本块到 3-4 行（每队 3-4 人）
+  - name: "林宽"                   # 必填：姓名
+    office: "长沙"                 # 必填：深圳 / 长沙 / 呼和浩特
+    dingtalk_handle: "vpc_f0mizpga2"        # 选填：钉钉 ID（用于话题圈 sync）
+    github_username: "userLongWu"        # 必填：GitHub 用户名（须已加入 lifebee-vibe-coding org）
   # 复制本块到 3-4 行（每队 3-4 人）
 
 # M1 校验通过条件：
