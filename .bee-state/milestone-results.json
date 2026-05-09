@@ -6,8 +6,8 @@
       "members_count": 3,
       "offices": [
         "长沙",
-        "呼和浩特",
-        "深圳"
+        "深圳",
+        "呼和浩特"
       ]
     }
   },
@@ -23,7 +23,7 @@
   },
   "m7": {
     "passed": true,
-    "message": "M7+ 通过：分支 ['main', 'xiaoxiao']",
+    "message": "M7+ 通过：分支 ['main', 'tanjiewen', 'xiaoxiao']",
     "details": null
   },
   "m8a": {
