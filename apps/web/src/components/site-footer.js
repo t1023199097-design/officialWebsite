@@ -1,9 +1,12 @@
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <p>BeeFintech official platform starter for the AI practical competition.</p>
-      <p>Frontend: Next.js portal. Backend: Spring Boot aggregation platform.</p>
+      <div className="footer-brand">
+        <span className="brand-badge">LB</span>
+        <strong>Beefintech / LifeBee</strong>
+      </div>
+      <p>一站式保險經紀管理平台，連接 APP、Admin、AI Robot 與安全數據隔離。</p>
+      <p>© 2026 Beefintech。LifeBee 是面向保險業務營運的數字化流程解決方案。</p>
     </footer>
   );
 }
-

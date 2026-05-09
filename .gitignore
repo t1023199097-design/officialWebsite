@@ -18,4 +18,5 @@ target/
 .m2repo/
 .omx/
 var/
-
+.superpowers/
+.obsidian/
