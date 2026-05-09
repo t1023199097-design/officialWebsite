@@ -17,8 +17,8 @@
     "details": null
   },
   "m4": {
-    "passed": true,
-    "message": "M4 通过：4 个 Phase",
+    "passed": false,
+    "message": "plan.md 缺少 marker `<!-- generated-by: superpowers-writing-plans -->`",
     "details": null
   },
   "m7": {
