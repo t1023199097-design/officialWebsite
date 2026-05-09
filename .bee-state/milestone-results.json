@@ -5,9 +5,9 @@
     "details": {
       "members_count": 3,
       "offices": [
-        "深圳",
         "长沙",
-        "呼和浩特"
+        "呼和浩特",
+        "深圳"
       ]
     }
   },
@@ -22,8 +22,8 @@
     "details": null
   },
   "m7": {
-    "passed": false,
-    "message": "至少需要 2 个分支（含 main + 1 个 feature/dev 分支），当前: ['main']",
+    "passed": true,
+    "message": "M7+ 通过：分支 ['main', 'xiaoxiao']",
     "details": null
   },
   "m8a": {
@@ -32,8 +32,8 @@
     "details": null
   },
   "m8b": {
-    "passed": false,
-    "message": "M8b AI 协作记录 字数不足（当前 234，要求 ≥ 500）",
+    "passed": true,
+    "message": "M8b AI 协作记录 通过：841 字符",
     "details": null
   },
   "m8c": {
