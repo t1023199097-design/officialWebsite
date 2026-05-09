@@ -5,9 +5,9 @@
     "details": {
       "members_count": 3,
       "offices": [
-        "长沙",
+        "呼和浩特",
         "深圳",
-        "呼和浩特"
+        "长沙"
       ]
     }
   },
@@ -17,8 +17,8 @@
     "details": null
   },
   "m4": {
-    "passed": false,
-    "message": "plan.md 缺少 marker `<!-- generated-by: superpowers-writing-plans -->`",
+    "passed": true,
+    "message": "M4 通过：4 个 Phase",
     "details": null
   },
   "m7": {
