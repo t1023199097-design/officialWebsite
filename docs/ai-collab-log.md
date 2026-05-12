@@ -80,3 +80,20 @@ AI 先定位 `docs/design.md` 中 `## 1. 目标` 所在行，确认该标题之�
 
 原因：
 `design.md` 适合保留比赛模板和设计文档上下文，但单独提交或传阅 Spec 时，前置模板信息会显得冗余。生成 `Spec.md` 可以让需求内容更直接、更适合团队查看和后续交付引用。
+
+## 时刻 7：同步官网页面到 xiaoxiao 分支
+
+任务：
+将 `xiaoyu` 分支当前可预览的 LifeBee 官网页面同步到 `xiaoxiao` 分支，并明确保留首页右侧水滴球体视觉。
+
+AI 给的初稿：
+AI 先检查 `xiaoyu` 与 `xiaoxiao` 分支结构差异，确认 `xiaoyu` 包含完整 `apps/web` 官网代码，而 `xiaoxiao` 原本主要是比赛文档骨架。随后选择只同步前端官网运行所需文件，不覆盖 `xiaoxiao` 原有 README、milestone、团队配置和比赛文档。
+
+我们改了什么：
+1. 将 `apps/web` 前端官网代码同步到 `xiaoxiao` 分支。
+2. 同步根目录 `package.json` 与 `package-lock.json`，保证本地可通过相同方式启动官网。
+3. 保留首页 `hero-visual`、`waterdrop-field`、`waterdrop-main`、`waterdrop-secondary` 和 `waterdrop-glint` 相关结构与样式。
+4. 启动 `http://127.0.0.1:5173/` 进行本地验证，确认首页、简体版和英文版均可访问。
+
+原因：
+团队后续需要在 `xiaoxiao` 分支继续查看和维护当前官网视觉版本。如果只保留文档而没有前端页面代码，新的对话或协作成员切到 `xiaoxiao` 后无法打开同一版官网，因此需要把当前已确认的页面同步到该分支。
