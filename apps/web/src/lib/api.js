@@ -3,10 +3,10 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8
 async function parseResponse(response) {
   const payload = await response.json().catch(() => ({}));
   if (!response.ok) {
-    const message = payload?.message || "Request failed";
+    const message = payload?.message || "提交失敗，請稍後重試。";
     throw new Error(message);
   }
-  return payload.data;
+  return payload.data || payload;
 }
 
 export async function fetchPlatformOverview() {
@@ -57,4 +57,3 @@ export async function fetchAdminModules(token) {
   });
   return parseResponse(response);
 }
-

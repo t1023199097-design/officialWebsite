@@ -1113,6 +1113,7 @@ p {
 }
 
 input,
+select,
 textarea {
   width: 100%;
   border: 1px solid var(--line);
@@ -1124,9 +1125,39 @@ textarea {
 }
 
 input:focus,
+select:focus,
 textarea:focus {
   border-color: var(--blue);
   box-shadow: 0 0 0 4px rgba(17, 98, 255, 0.12);
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  color: #17345f;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.checkbox-option input {
+  width: auto;
+}
+
+.field-error {
+  color: #9a2e1d;
+  font-size: 13px;
+  font-weight: 800;
 }
 
 .status-message {
@@ -1291,7 +1322,8 @@ td {
   .section-grid,
   .hero-grid,
   .admin-grid,
-  .form-grid {
+  .form-grid,
+  .checkbox-grid {
     grid-template-columns: 1fr;
   }
 

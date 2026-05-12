@@ -2,7 +2,15 @@ const assert = require("node:assert/strict");
 
 (async () => {
   const { moduleCatalog, moduleCategories, getModuleBySlug } = await import("./module-catalog.mjs");
-  const { demoHomeContent, getDemoHomeContent } = await import("./site-content.mjs");
+  const {
+    contactContent,
+    demoHomeContent,
+    getDemoHomeContent,
+    getInsightBySlug,
+    insightArticles,
+    marketScaleContent,
+    serviceCapabilities
+  } = await import("./site-content.mjs");
 
   assert.deepEqual(moduleCategories, ["content", "support", "tools"]);
   assert.equal(moduleCatalog.length, 3);
@@ -38,6 +46,16 @@ const assert = require("node:assert/strict");
     ["day", "gold", "night"]
   );
   assert.equal(demoHomeContent.metrics.length, 4);
+  assert.deepEqual(
+    serviceCapabilities.map((capability) => capability.title),
+    ["展業效率提升", "經營管理提效", "流程協同與數據賦能", "長期服務支持"]
+  );
+  assert.equal(marketScaleContent.sections.length, 3);
+  assert.equal(marketScaleContent.notes.length, 2);
+  assert.equal(insightArticles.length, 2);
+  assert.equal(getInsightBySlug("insurance-brokerage-digital-operations").category, "保險科技資訊");
+  assert.equal(getInsightBySlug("missing-article"), null);
+  assert.equal(contactContent.channels.length, 3);
   console.log("module catalog assertions passed");
 })().catch((error) => {
   console.error(error);

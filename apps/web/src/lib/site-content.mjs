@@ -46,10 +46,10 @@ export const demoHomeContent = {
   ],
   trustLogos: ["經紀營運", "顧問 APP", "管理後台", "保司 API", "數據金庫"],
   metrics: [
-    { value: "1,200+", label: "已投入使用的活躍用戶" },
-    { value: "80,000+", label: "已服務客戶資料量" },
-    { value: "300,000+", label: "已處理流程個案" },
-    { value: "35%", label: "平均營運效率提升" }
+    { value: "近10年", label: "深耕香港保險經紀行業" },
+    { value: "亞太", label: "覆蓋香港、澳門、台灣及新加坡方向" },
+    { value: "雙端", label: "PC 管理端與手機 APP 協同" },
+    { value: "可核實", label: "具體市場數據待團隊確認口徑" }
   ],
   pillarThemes: [
     { key: "day", label: "專業藍", detail: "清晰可信的預設展示" },
@@ -138,6 +138,100 @@ export const demoHomeContent = {
     description: "用科技金融藍的速度感，承載保險經紀公司真正需要的效率、安全與數據主權。",
     button: "聯絡 LifeBee"
   }
+};
+
+export const serviceCapabilities = [
+  {
+    title: "展業效率提升",
+    audience: "前線顧問、銷售團隊、獨立 IFA",
+    description: "集中產品資料、市場資訊、方案準備、客戶跟進與業務提醒，減少顧問在群組、表格和文件夾之間反覆查找。"
+  },
+  {
+    title: "經營管理提效",
+    audience: "管理層、行政營運、財務團隊",
+    description: "把客戶、保單、佣金、文件與任務集中到可視化流程中，讓內部團隊用同一套標準管理進度與責任。"
+  },
+  {
+    title: "流程協同與數據賦能",
+    audience: "需要標準化流程和數據化經營的經紀公司",
+    description: "讓 APP、Admin、API 與資料權限在同一邏輯下協作，幫助團隊看清流程、看見進度、看懂經營結果。"
+  },
+  {
+    title: "長期服務支持",
+    audience: "現有客戶與潛在合作伙伴",
+    description: "以持續產品迭代、部署支持、合規意識和保險行業理解，陪伴機構完成長期數字化升級。"
+  }
+];
+
+export const marketScaleContent = {
+  hero: {
+    eyebrow: "Market Scale",
+    title: "以香港保險經紀市場為基礎，連接亞太核心市場的數字化服務能力。",
+    description:
+      "LifeBee 的市場表達以可核實資料與保守口徑為原則，重點展示服務伙伴、覆蓋方向、流程改善與長期營運價值。"
+  },
+  sections: [
+    {
+      title: "服務伙伴",
+      body: "面向香港保險中介機構、經紀公司、獨立 IFA、保險公司及合作伙伴，提供從前線展業到後台營運的數字化支援。"
+    },
+    {
+      title: "市場覆蓋",
+      body: "以香港市場服務基礎為核心，服務網絡輻射澳門、台灣、新加坡等亞太核心市場方向，支持跨區域經紀業務拓展。"
+    },
+    {
+      title: "服務成果",
+      body: "聚焦資料集中、流程透明、提醒自動化、服務跟進與經營可視化，幫助機構降低碎片化流程帶來的管理成本。"
+    }
+  ],
+  notes: [
+    "具體服務數量、客戶資料量、流程個案量與市場份額，需由團隊確認後展示。",
+    "涉及市場排名或份額時，需標注來源、統計口徑與更新時間。"
+  ]
+};
+
+export const insightArticles = [
+  {
+    slug: "insurance-brokerage-digital-operations",
+    category: "保險科技資訊",
+    date: "2026-05-12",
+    title: "保險經紀公司如何從碎片化流程走向數字化營運",
+    summary: "從客戶資料、保單服務、佣金核對與任務提醒四個場景，理解經紀業務數字化的第一步。",
+    body: [
+      "保險經紀公司的日常營運往往分散在聊天工具、表格、文件夾和不同保司系統之間。當業務量增加時，資料查找、文件補交、續保提醒和佣金核對都會成為管理壓力。",
+      "LifeBee 的價值不在於把每個操作變得更複雜，而是把關鍵資料、流程節點和團隊責任收束到同一套數據邏輯中。前線顧問能更快準備方案，內部團隊能更清楚看見進度，管理層也能用可視化資料判斷經營狀態。",
+      "對第一階段的數字化升級而言，企業應優先處理資料集中、流程標準化和提醒機制，再逐步擴展到 API 授權、私有部署和更細緻的經營分析。"
+    ]
+  },
+  {
+    slug: "broker-compliance-data-governance",
+    category: "行業政策解讀",
+    date: "2026-05-12",
+    title: "合規壓力下，保險中介為什麼需要更清晰的資料治理",
+    summary: "面對跨團隊協作與客戶服務留痕要求，資料權限、流程記錄與可追溯管理正變得越來越重要。",
+    body: [
+      "保險中介機構在服務客戶時，需要同時兼顧效率、合規與資料安全。當客戶資料和服務記錄散落在不同個人工具中，企業很難形成穩定、可追溯的管理機制。",
+      "數字化系統能幫助機構建立角色權限、資料隔離、流程記錄和關鍵節點提醒，讓服務不只依賴個人經驗，也能沉澱為可管理的組織能力。",
+      "任何對外展示的政策或市場判斷，都應保留更新日期與資料來源。LifeBee 官網第一階段以專業解讀和保守表達為主，避免使用未確認的市場承諾。"
+    ]
+  }
+];
+
+export function getInsightBySlug(slug) {
+  return insightArticles.find((article) => article.slug === slug) || null;
+}
+
+export const contactContent = {
+  hero: {
+    eyebrow: "Contact",
+    title: "與 LifeBee 團隊聊聊保險經紀業務的數字化升級。",
+    description: "無論是商務合作、渠道合作、客戶服務或一般查詢，都可以先留下需求，團隊會按內容安排跟進。"
+  },
+  channels: [
+    { title: "商務合作", body: "適合經紀公司、保險中介機構、IFA 團隊與保險公司了解 LifeBee 服務能力。" },
+    { title: "渠道合作", body: "適合希望共同拓展香港及亞太保險科技服務的合作伙伴。" },
+    { title: "客戶服務", body: "適合現有客戶提交服務諮詢、流程協作或後續支持需求。" }
+  ]
 };
 
 const localizedHomeContent = {

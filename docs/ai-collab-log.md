@@ -97,3 +97,31 @@ AI 先检查 `xiaoyu` 与 `xiaoxiao` 分支结构差异，确认 `xiaoyu` 包含
 
 原因：
 团队后续需要在 `xiaoxiao` 分支继续查看和维护当前官网视觉版本。如果只保留文档而没有前端页面代码，新的对话或协作成员切到 `xiaoxiao` 后无法打开同一版官网，因此需要把当前已确认的页面同步到该分支。
+
+## 时刻 8：根据 design.md 调整官网展示内容与功能
+
+任务：
+在 `xiaoxiao` 分支继续完善 LifeBee 官网，要求严格根据 `docs/design.md` 的需求文档调整页面展示部分和功能，同时保持当前网站设计不变，尤其不能改动首页右侧水滴球体。
+
+AI 给的初稿：
+AI 先读取 `docs/design.md`、首页 `apps/web/app/page.js`、站点内容数据、导航、页脚、预约表单和现有样式文件，判断当前首页已经形成独立视觉版本。AI 没有直接重做页面，而是提出“只改内容与功能层，不改首页视觉结构”的方案：保留首页布局、动效和水滴球体；补齐需求文档中的页面架构；强化预约表单；将前台文案从比赛骨架语气调整为正式品牌官网表达。
+
+我们改了什么：
+1. 保持首页 `apps/web/app/page.js` 不变，未改动 `hero-visual`、`waterdrop-field`、`waterdrop-main`、`waterdrop-secondary`、`waterdrop-glint` 等首页水滴球体结构。
+2. 新增 `/market-scale` 市场业务规模页，用于展示服务伙伴、市场覆盖、服务成果和数据口径说明。
+3. 新增 `/insights` 内容服务页和 `/insights/:slug` 内容详情页，聚焦保险科技资讯与行业政策解读。
+4. 新增 `/contact` 联系我们页，承接商务合作、渠道合作、客户服务和一般联系需求。
+5. 新增 `not-found.js`，让 404 页面提供返回首页、预约演示和联系我们入口。
+6. 将 `/services` 调整为品牌功能介绍页，围绕展业效率提升、经营管理提效、流程协同与数据赋能、长期服务支持四个大模块表达。
+7. 保留 `/solutions` 作为兼容入口，但复用品牌功能介绍页内容，避免旧入口失效。
+8. 将导航和页脚从 Admin / 比赛骨架语气改为正式 LifeBee 官网入口和品牌说明。
+9. 按需求文档强化 `/demo` 预约表单，补充姓名、公司名称、联系电话、预约时间、备注，以及公司所在地、团队规模、希望了解的服务方向等可选字段。
+10. 为预约表单增加前端必填校验、电话格式校验、预约时间校验、提交中状态、防重复提交、成功提示和失败提示。
+11. 保持 API 调用可替换，继续使用 `NEXT_PUBLIC_API_BASE_URL`，同时提交文档建议字段结构中的 `name`、`company`、`phone`、`appointmentTime`、`message`、`region`、`teamSize`、`interest`。
+12. 扩展 `apps/web/src/lib/module-catalog.test.js`，让新增站点内容、文章数据、市场规模内容和联系渠道有基础测试覆盖。
+
+原因：
+`design.md` 的目标是把 LifeBee 官网从基础展示页升级为品牌推广与商务转化入口，而不是重做视觉设计。当前首页右侧水滴球体已经是团队确认过的视觉重点，因此 AI 将工作边界收敛到“页面展示内容、信息架构和表单功能”，避免破坏现有首屏体验。新增页面让官网符合需求文档中的首页、品牌功能介绍、市场业务规模、预约咨询演示、关于我们、内容服务、联系我们和 404 架构；强化表单则让官网具备实际转化能力。
+
+验证：
+AI 在修改后执行了 `npm run test --workspace apps/web`，确认内容数据测试通过；执行 `npm run build --workspace apps/web`，确认 Next.js 生产构建成功；重启 `http://127.0.0.1:5173/` 预览服务后，检查 `/`、`/services`、`/market-scale`、`/insights`、`/insights/insurance-brokerage-digital-operations`、`/contact`、`/demo` 均返回 200，未知页面返回 404。

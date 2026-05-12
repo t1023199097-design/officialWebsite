@@ -4,10 +4,11 @@ import { demoHomeContent } from "@/lib/site-content.mjs";
 
 const links = [
   { href: "/", label: "首頁" },
-  { href: "/solutions", label: "解決方案" },
+  { href: "/services", label: "品牌功能" },
+  { href: "/market-scale", label: "市場規模" },
+  { href: "/insights", label: "內容服務" },
   { href: "/about", label: "關於我們" },
-  { href: "/demo", label: "聯絡我們" },
-  { href: "/admin", label: "Admin" }
+  { href: "/contact", label: "聯絡我們" }
 ];
 
 export function SiteHeader() {
