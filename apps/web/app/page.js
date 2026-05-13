@@ -1,11 +1,15 @@
 import Link from "next/link";
-import { getDemoHomeContent, normalizeLocale } from "@/lib/site-content.mjs";
+import {
+  getDemoHomeContent,
+  homeFeaturePreview,
+  homeFlipSections,
+  normalizeLocale,
+} from "@/lib/site-content.mjs";
 
 export default function HomePage({ searchParams }) {
   const locale = normalizeLocale(searchParams?.lang);
   const demoHomeContent = getDemoHomeContent(locale);
   const languageSuffix = locale === "zh-Hant" ? "" : `?lang=${locale}`;
-  const repeatedFeatures = [...demoHomeContent.serviceFeatures, ...demoHomeContent.serviceFeatures];
 
   return (
     <div className="lifebee-demo">
@@ -42,109 +46,99 @@ export default function HomePage({ searchParams }) {
         <HeroFeatureScroller modules={demoHomeContent.heroModules} />
       </section>
 
-      <section className="logo-strip" aria-label="LifeBee 能力背書">
-        {demoHomeContent.trustLogos.map((logo) => (
-          <span key={logo}>{logo}</span>
-        ))}
-      </section>
-
-      <section className="business-pillars business-pillars--day" aria-labelledby="business-pillars-title">
-        <div className="pillar-background" aria-hidden="true">
-          <span className="pillar-light-plane pillar-light-plane-one" />
-          <span className="pillar-light-plane pillar-light-plane-two" />
-          <span className="pillar-data-grid" />
-          <span className="pillar-data-lines" />
-        </div>
-        <div className="pillar-inner">
-          <div className="pillar-heading">
-            <p className="eyebrow">Insurance technology pillars</p>
-            <h2 id="business-pillars-title">保險科技服務支柱</h2>
-            <p>
-              以 LifeBee 的業務數據為主角，讓服務規模、資料能力、流程效率與營運提升在同一個演示區裡被看見。
-            </p>
-          </div>
-          <div className="pillar-theme-row" aria-label="展示主題">
-            {demoHomeContent.pillarThemes.map((theme, index) => (
-              <span className={index === 0 ? "theme-chip is-active" : "theme-chip"} key={theme.key}>
-                <b>{theme.label}</b>
-                <small>{theme.detail}</small>
-              </span>
-            ))}
-          </div>
-          <div className="pillar-stats" aria-label="LifeBee 核心業務數據">
-            {demoHomeContent.metrics.map((metric, index) => (
-              <article className={index === 0 ? "pillar-stat is-active" : "pillar-stat"} key={metric.label}>
-                <span className="pillar-stat-index">0{index + 1}</span>
-                <strong>{metric.value}</strong>
-                <span>{metric.label}</span>
+      <section className="flip-section" aria-labelledby="home-flip-title">
+        <FeatureServicePreview />
+        <div className="flip-module-list">
+          {homeFlipSections.map((section) => (
+            <section className="flip-module-block" id={section.id} key={section.id} aria-labelledby={`${section.id}-detail-title`}>
+              <article className="flip-card" tabIndex={0}>
+                <div className="flip-card-inner">
+                  <div className="flip-card-face flip-card-front">
+                    <p className="eyebrow">{section.eyebrow}</p>
+                    <h3>{section.title}</h3>
+                    <p>{section.subtitle}</p>
+                  </div>
+                  <div className="flip-card-face flip-card-back">
+                    <p className="eyebrow">{section.title}</p>
+                    <h3>{section.subtitle}</h3>
+                    <p>{section.description}</p>
+                    <div className="flip-tags" aria-label={`${section.title}重點`}>
+                      {section.points.map((point) => (
+                        <span key={point}>{point}</span>
+                      ))}
+                    </div>
+                    <Link className="secondary-button" href={`${section.href}${languageSuffix}`}>
+                      查看詳情
+                    </Link>
+                  </div>
+                </div>
               </article>
-            ))}
-            <span className="pillar-indicator" aria-hidden="true" />
-          </div>
+              <div className="module-detail-panel">
+                <div className="module-detail-heading">
+                  <p className="eyebrow">{section.eyebrow}</p>
+                  <h3 id={`${section.id}-detail-title`}>{section.title}</h3>
+                  <p>{section.description}</p>
+                </div>
+                <div className="module-detail-grid">
+                  {section.details.map((detail) => (
+                    <article className="module-detail-card" key={detail.label}>
+                      <strong>{detail.label}</strong>
+                      <p>{detail.text}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </section>
+          ))}
         </div>
       </section>
+    </div>
+  );
+}
 
-      <section className="split-section">
-        <div className="section-heading left">
-          <p className="eyebrow">{demoHomeContent.workflow.eyebrow}</p>
-          <h2>{demoHomeContent.workflow.title}</h2>
-          <p>{demoHomeContent.workflow.description}</p>
-        </div>
-        <div className="value-list">
-          {demoHomeContent.workflow.highlights.map((item) => (
-            <div className="value-row" key={item.label}>
-              <strong>{item.label}</strong>
-              <span>{item.detail}</span>
+function FeatureServicePreview() {
+  return (
+    <div className="feature-preview" aria-labelledby="home-flip-title">
+      <div className="feature-visual" aria-label="LifeBee 功能服務管理台示意">
+        <div className="feature-laptop">
+          <div className="feature-toolbar">
+            <span />
+            <strong>首頁</strong>
+            <small>2026-07-01</small>
+          </div>
+          <div className="feature-stat-row">
+            {homeFeaturePreview.cards.map((card) => (
+              <div className="feature-stat-card" key={card.label}>
+                <strong>{card.value}</strong>
+                <span>{card.label}</span>
+              </div>
+            ))}
+          </div>
+          <div className="feature-chart-grid">
+            <div className="bar-chart" aria-hidden="true">
+              {[36, 58, 72, 90, 52, 68, 108, 44, 55, 63].map((height, index) => (
+                <span key={index} style={{ "--bar-height": `${height}%` }} />
+              ))}
             </div>
-          ))}
+            <div className="donut-chart" aria-hidden="true">
+              <span />
+            </div>
+          </div>
         </div>
-      </section>
-
-      <section className="service-showcase" id="services">
-        <div className="section-heading">
-          <p className="eyebrow">{demoHomeContent.serviceShowcase.eyebrow}</p>
-          <h2>{demoHomeContent.serviceShowcase.title}</h2>
-          <p>{demoHomeContent.serviceShowcase.description}</p>
-        </div>
-        <div className="service-slider" aria-label="LifeBee 工具與服務功能">
-          <div className="service-track">
-            {repeatedFeatures.map((item, index) => (
-              <article className="service-slide" key={`${item.title}-${index}`}>
-                <div className="service-icon">{index + 1 > demoHomeContent.serviceFeatures.length ? index + 1 - demoHomeContent.serviceFeatures.length : index + 1}</div>
-                <span>{item.kicker}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </article>
+        <div className="feature-phone">
+          <span className="phone-time">9:41</span>
+          <strong>功能</strong>
+          <div className="phone-grid">
+            {homeFeaturePreview.phoneGroups.map((item) => (
+              <span key={item}>{item}</span>
             ))}
           </div>
         </div>
-      </section>
-
-      <section className="bento-section">
-        <div className="section-heading">
-          <p className="eyebrow">解決方案矩陣</p>
-          <h2>把複雜保險流程轉成清晰可控的數字化工作台。</h2>
-        </div>
-        <div className="bento-grid">
-          {demoHomeContent.values.map((item, index) => (
-            <article className={`bento-card ${index === 0 || index === 3 ? "wide" : ""}`} key={item.title}>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="cta-band">
-        <div>
-          <p className="eyebrow">{demoHomeContent.cta.eyebrow}</p>
-          <h2>{demoHomeContent.cta.title}</h2>
-          <p>{demoHomeContent.cta.description}</p>
-        </div>
-        <Link className="primary-button" href={`/demo${languageSuffix}`}>
-          {demoHomeContent.cta.button}
-        </Link>
-      </section>
+        <span className="feature-light feature-light-one" aria-hidden="true" />
+        <span className="feature-light feature-light-two" aria-hidden="true" />
+      </div>
+      <p className="eyebrow">{homeFeaturePreview.eyebrow}</p>
+      <h2 id="home-flip-title">{homeFeaturePreview.title}</h2>
     </div>
   );
 }

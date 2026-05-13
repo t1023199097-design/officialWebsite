@@ -7,6 +7,9 @@ const assert = require("node:assert/strict");
     demoHomeContent,
     getDemoHomeContent,
     getInsightBySlug,
+    homeAnchorNav,
+    homeFeaturePreview,
+    homeFlipSections,
     insightArticles,
     marketScaleContent,
     serviceCapabilities
@@ -56,6 +59,19 @@ const assert = require("node:assert/strict");
   assert.equal(getInsightBySlug("insurance-brokerage-digital-operations").category, "保險科技資訊");
   assert.equal(getInsightBySlug("missing-article"), null);
   assert.equal(contactContent.channels.length, 3);
+  assert.deepEqual(
+    homeAnchorNav.map((item) => item.href),
+    ["/", "/#brand-functions", "/#market-scale", "/#content-service", "/#about-lifeBee", "/#contact-lifeBee"]
+  );
+  assert.equal(homeFeaturePreview.title, "功能服務");
+  assert.equal(homeFeaturePreview.cards.length, 4);
+  assert.equal(homeFeaturePreview.phoneGroups.length, 6);
+  assert.deepEqual(
+    homeFlipSections.map((item) => item.id),
+    ["brand-functions", "market-scale", "content-service", "about-lifeBee", "contact-lifeBee"]
+  );
+  assert.equal(homeFlipSections.every((item) => item.points.length === 4), true);
+  assert.equal(homeFlipSections.every((item) => item.details.length === 3), true);
   console.log("module catalog assertions passed");
 })().catch((error) => {
   console.error(error);

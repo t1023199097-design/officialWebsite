@@ -1,15 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { demoHomeContent } from "@/lib/site-content.mjs";
-
-const links = [
-  { href: "/", label: "首頁" },
-  { href: "/services", label: "品牌功能" },
-  { href: "/market-scale", label: "市場規模" },
-  { href: "/insights", label: "內容服務" },
-  { href: "/about", label: "關於我們" },
-  { href: "/contact", label: "聯絡我們" }
-];
+import { demoHomeContent, homeAnchorNav } from "@/lib/site-content.mjs";
 
 export function SiteHeader() {
   return (
@@ -21,7 +12,7 @@ export function SiteHeader() {
         <span className="brand-title">LifeBee</span>
       </Link>
       <nav className="site-nav">
-        {links.map((link) => (
+        {homeAnchorNav.map((link) => (
           <Link key={link.href} href={link.href}>
             {link.label}
           </Link>

@@ -234,6 +234,100 @@ export const contactContent = {
   ]
 };
 
+export const homeAnchorNav = [
+  { href: "/", label: "首頁" },
+  { href: "/#brand-functions", label: "品牌功能" },
+  { href: "/#market-scale", label: "市場規模" },
+  { href: "/#content-service", label: "內容服務" },
+  { href: "/#about-lifeBee", label: "關於我們" },
+  { href: "/#contact-lifeBee", label: "聯絡我們" }
+];
+
+export const homeFeaturePreview = {
+  eyebrow: "Function Service",
+  title: "功能服務",
+  cards: [
+    { value: "1,132,344", label: "保費統計" },
+    { value: "3,808,007.85", label: "保單金額" },
+    { value: "2,106,881.86", label: "收益統計" },
+    { value: "1,275,110.05", label: "規模總覽" }
+  ],
+  phoneGroups: ["產品庫", "保費試算", "計劃書", "客戶跟進", "新單跟進", "保單服務"]
+};
+
+export const homeFlipSections = [
+  {
+    id: "brand-functions",
+    eyebrow: "Brand Capabilities",
+    title: "品牌功能",
+    subtitle: "四大服務能力模塊",
+    description: "展業效率提升、經營管理提效、流程協同與數據賦能、長期服務支持，讓保險經紀公司快速理解 LifeBee 的核心價值。",
+    points: ["展業效率提升", "經營管理提效", "流程協同與數據賦能", "長期服務支持"],
+    details: [
+      { label: "展業效率提升", text: "集中產品資料、市場資訊、方案準備與客戶跟進，減少顧問在多個工具之間切換。" },
+      { label: "經營管理提效", text: "把客戶、保單、文件、佣金與任務放入同一套可視化流程，讓管理層看見進度與責任。" },
+      { label: "流程協同與數據賦能", text: "連接 APP、Admin、API 與資料權限，讓前線顧問與內部營運使用一致的數據邏輯。" }
+    ],
+    href: "/services"
+  },
+  {
+    id: "market-scale",
+    eyebrow: "Market Scale",
+    title: "市場規模",
+    subtitle: "服務伙伴、覆蓋方向與成果口徑",
+    description: "以香港市場服務基礎為核心，展示 LifeBee 面向保險中介、經紀公司、獨立 IFA 和亞太核心市場方向的服務能力。",
+    points: ["服務伙伴", "香港市場基礎", "亞太核心市場方向", "可核實數據口徑"],
+    details: [
+      { label: "服務伙伴", text: "面向香港保險中介機構、經紀公司、獨立 IFA、保險公司及合作伙伴。" },
+      { label: "市場覆蓋", text: "以香港服務基礎為核心，延伸澳門、台灣、新加坡等亞太核心市場方向。" },
+      { label: "數據口徑", text: "具體數字與市場份額保留來源、統計口徑與團隊確認機制，避免誇大承諾。" }
+    ],
+    href: "/market-scale"
+  },
+  {
+    id: "content-service",
+    eyebrow: "Content Service",
+    title: "內容服務",
+    subtitle: "保險科技資訊與政策解讀",
+    description: "以保險科技資訊與行業政策解讀建立專業度，保留內容服務類增值功能，不擴展工具型模塊。",
+    points: ["保險科技資訊", "行業政策解讀", "市場觀察", "文章詳情入口"],
+    details: [
+      { label: "保險科技資訊", text: "展示保險科技行業趨勢、市場觀察和經紀業務數字化案例。" },
+      { label: "行業政策解讀", text: "圍繞保險經紀相關政策、行業規範和市場變化提供清晰解讀。" },
+      { label: "內容邊界", text: "第一階段只保留內容服務，不擴展 FAQ、工單、ROI 計算器等工具型功能。" }
+    ],
+    href: "/insights"
+  },
+  {
+    id: "about-lifeBee",
+    eyebrow: "About LifeBee",
+    title: "關於我們",
+    subtitle: "行業理解與長期服務願景",
+    description: "展示 BeeFintech 對香港保險經紀行業的理解、產品理念、服務優勢與長期陪伴客戶數字化升級的願景。",
+    points: ["公司背景", "行業理解", "產品理念", "長期願景"],
+    details: [
+      { label: "公司背景", text: "BeeFintech 深耕香港保險經紀行業，LifeBee 由金融保險從業者與科技產品團隊共同打造。" },
+      { label: "產品理念", text: "不把官網做成操作手冊，而是聚焦品牌價值、服務能力、成果信任與預約轉化。" },
+      { label: "長期願景", text: "作為保險經紀公司的長期數字化服務伙伴，持續支持企業提升營運與服務能力。" }
+    ],
+    href: "/about"
+  },
+  {
+    id: "contact-lifeBee",
+    eyebrow: "Contact LifeBee",
+    title: "聯絡我們",
+    subtitle: "合作諮詢與預約演示",
+    description: "承接商務合作、渠道合作、客戶服務和一般查詢，將訪客引導至預約諮詢演示表單。",
+    points: ["商務合作", "渠道合作", "客戶服務", "預約諮詢演示"],
+    details: [
+      { label: "商務合作", text: "適合經紀公司、保險中介機構、IFA 團隊與保險公司了解 LifeBee 服務能力。" },
+      { label: "渠道合作", text: "適合希望共同拓展香港及亞太保險科技服務的合作伙伴。" },
+      { label: "預約演示", text: "表單收集姓名、公司、電話、預約時間和需求方向，方便團隊安排跟進。" }
+    ],
+    href: "/contact"
+  }
+];
+
 const localizedHomeContent = {
   "zh-Hant": demoHomeContent,
   "zh-Hans": {
