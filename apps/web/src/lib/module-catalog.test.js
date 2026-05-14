@@ -1,4 +1,6 @@
 const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const path = require("node:path");
 
 (async () => {
   const { moduleCatalog, moduleCategories, getModuleBySlug } = await import("./module-catalog.mjs");
@@ -9,7 +11,7 @@ const assert = require("node:assert/strict");
     getInsightBySlug,
     homeAnchorNav,
     homeFeaturePreview,
-    homeFlipSections,
+    homeShowcaseSections,
     insightArticles,
     marketScaleContent,
     serviceCapabilities
@@ -31,6 +33,10 @@ const assert = require("node:assert/strict");
 
   assert.equal(demoHomeContent.hero.sloganMain, "客戶至上，服務為先");
   assert.equal(demoHomeContent.hero.sloganSub, "以科技力量擁抱世界");
+  assert.equal(demoHomeContent.hero.lead.length, 2);
+  assert.equal(demoHomeContent.hero.lead[0], "香港首家科創.香港保險展業全鏈條經紀業務管理系統(LifeBee)");
+  assert.match(demoHomeContent.hero.lead.join(""), /香港首家專註保險經紀全鏈路/);
+  assert.match(demoHomeContent.hero.lead.join(""), /合規、效率、數據/);
   assert.deepEqual(
     demoHomeContent.serviceFeatures.map((feature) => feature.title),
     ["資訊", "產品庫", "投保", "新單", "保單", "介紹費"]
@@ -66,12 +72,37 @@ const assert = require("node:assert/strict");
   assert.equal(homeFeaturePreview.title, "功能服務");
   assert.equal(homeFeaturePreview.cards.length, 4);
   assert.equal(homeFeaturePreview.phoneGroups.length, 6);
+  const pagePath = path.join(process.cwd(), "app/page.js");
+  const page = fs.readFileSync(pagePath, "utf8");
+  assert.match(page, /品牌功能/);
+  assert.match(page, /市場規模/);
+  assert.match(page, /關於我們/);
+  assert.doesNotMatch(page, /demoHomeContent\.hero\.primaryCta/);
+  assert.match(page, /hero-action-button/);
   assert.deepEqual(
-    homeFlipSections.map((item) => item.id),
+    homeShowcaseSections.map((item) => item.id),
     ["brand-functions", "market-scale", "content-service", "about-lifeBee", "contact-lifeBee"]
   );
-  assert.equal(homeFlipSections.every((item) => item.points.length === 4), true);
-  assert.equal(homeFlipSections.every((item) => item.details.length === 3), true);
+  assert.equal(homeShowcaseSections.every((item) => item.points.length === 4), true);
+  assert.equal(homeShowcaseSections.every((item) => item.details.length === 3), true);
+  assert.equal(homeShowcaseSections.every((item) => item.motionLabel), true);
+
+  const cssPath = path.join(process.cwd(), "app/globals.css");
+  const css = fs.readFileSync(cssPath, "utf8");
+  assert.match(css, /\.waterdrop-ripple/);
+  assert.match(css, /@keyframes waterdrop-ripple/);
+  assert.match(css, /\.hero-visual:hover \.waterdrop-ripple/);
+  assert.match(css, /waterdrop-liquid-ripple/);
+  assert.match(css, /blur\(8px\)/);
+  assert.match(css, /\.waterdrop-shadow/);
+  assert.match(css, /\.waterdrop-caustic/);
+  assert.match(css, /inset -70px -90px 140px/);
+  assert.match(css, /\.feature-laptop/);
+  assert.match(css, /\.feature-phone/);
+  assert.match(css, /\.feature-stat-row/);
+  assert.match(css, /\.feature-chart-grid/);
+  assert.match(css, /\.phone-grid/);
+  assert.match(css, /feature-shine/);
   console.log("module catalog assertions passed");
 })().catch((error) => {
   console.error(error);

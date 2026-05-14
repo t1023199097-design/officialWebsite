@@ -2,7 +2,7 @@ import Link from "next/link";
 import {
   getDemoHomeContent,
   homeFeaturePreview,
-  homeFlipSections,
+  homeShowcaseSections,
   normalizeLocale,
 } from "@/lib/site-content.mjs";
 
@@ -10,6 +10,7 @@ export default function HomePage({ searchParams }) {
   const locale = normalizeLocale(searchParams?.lang);
   const demoHomeContent = getDemoHomeContent(locale);
   const languageSuffix = locale === "zh-Hant" ? "" : `?lang=${locale}`;
+  const homeHash = (hash) => (locale === "zh-Hant" ? `/#${hash}` : `/?lang=${locale}#${hash}`);
 
   return (
     <div className="lifebee-demo">
@@ -28,19 +29,26 @@ export default function HomePage({ searchParams }) {
             ))}
           </div>
           <div className="hero-actions">
-            <Link className="primary-button" href={`/demo${languageSuffix}`}>
-              {demoHomeContent.hero.primaryCta}
+            <Link className="secondary-button hero-action-button" href={homeHash("brand-functions")}>
+              品牌功能
             </Link>
-            <Link className="secondary-button" href={`/solutions${languageSuffix}`}>
-              {demoHomeContent.hero.secondaryCta}
+            <Link className="secondary-button hero-action-button" href={homeHash("market-scale")}>
+              市場規模
+            </Link>
+            <Link className="secondary-button hero-action-button" href={homeHash("about-lifeBee")}>
+              關於我們
             </Link>
           </div>
         </div>
         <div className="hero-visual" aria-label="LifeBee 產品工作台示意">
           <div className="waterdrop-field" aria-hidden="true">
+            <span className="waterdrop-shadow" />
             <span className="waterdrop waterdrop-main" />
+            <span className="waterdrop-caustic" />
             <span className="waterdrop waterdrop-secondary" />
             <span className="waterdrop waterdrop-glint" />
+            <span className="waterdrop-ripple waterdrop-ripple-one" />
+            <span className="waterdrop-ripple waterdrop-ripple-two" />
           </div>
         </div>
         <HeroFeatureScroller modules={demoHomeContent.heroModules} />
@@ -48,35 +56,34 @@ export default function HomePage({ searchParams }) {
 
       <section className="flip-section" aria-labelledby="home-flip-title">
         <FeatureServicePreview />
-        <div className="flip-module-list">
-          {homeFlipSections.map((section) => (
-            <section className="flip-module-block" id={section.id} key={section.id} aria-labelledby={`${section.id}-detail-title`}>
-              <article className="flip-card" tabIndex={0}>
-                <div className="flip-card-inner">
-                  <div className="flip-card-face flip-card-front">
-                    <p className="eyebrow">{section.eyebrow}</p>
-                    <h3>{section.title}</h3>
-                    <p>{section.subtitle}</p>
-                  </div>
-                  <div className="flip-card-face flip-card-back">
-                    <p className="eyebrow">{section.title}</p>
-                    <h3>{section.subtitle}</h3>
-                    <p>{section.description}</p>
-                    <div className="flip-tags" aria-label={`${section.title}重點`}>
-                      {section.points.map((point) => (
-                        <span key={point}>{point}</span>
-                      ))}
-                    </div>
-                    <Link className="secondary-button" href={`${section.href}${languageSuffix}`}>
-                      查看詳情
-                    </Link>
-                  </div>
-                </div>
-              </article>
-              <div className="module-detail-panel">
-                <div className="module-detail-heading">
+        <div className="showcase-module-list">
+          {homeShowcaseSections.map((section) => (
+            <section className="showcase-module-block" id={section.id} key={section.id} aria-labelledby={`${section.id}-detail-title`}>
+              <div className="showcase-focus-card">
+                <div className="showcase-copy">
                   <p className="eyebrow">{section.eyebrow}</p>
                   <h3 id={`${section.id}-detail-title`}>{section.title}</h3>
+                  <p>{section.description}</p>
+                  <div className="showcase-tags" aria-label={`${section.title}重點`}>
+                    {section.points.map((point) => (
+                      <span key={point}>{point}</span>
+                    ))}
+                  </div>
+                  <Link className="secondary-button" href={`${section.href}${languageSuffix}`}>
+                    查看詳情
+                  </Link>
+                </div>
+                <div className="showcase-motion" aria-hidden="true">
+                  <span className="showcase-motion-label">{section.motionLabel}</span>
+                  <span className="showcase-orbit showcase-orbit-one" />
+                  <span className="showcase-orbit showcase-orbit-two" />
+                  <span className="showcase-glowline" />
+                </div>
+              </div>
+              <div className="module-detail-panel">
+                <div className="module-detail-heading">
+                  <p className="eyebrow">{section.subtitle}</p>
+                  <h3>{section.title}</h3>
                   <p>{section.description}</p>
                 </div>
                 <div className="module-detail-grid">
