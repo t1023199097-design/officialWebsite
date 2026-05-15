@@ -67,22 +67,20 @@ export default function ProductServicesPage({ searchParams }) {
           </div>
         </div>
         <div className="ps-capability-grid">
-          {hero.cards.map((card) => (
+          {hero.cards.map((card, index) => (
             <article className={`ps-cap-card ps-${card.accent}`} key={card.title}>
-              <h2>{card.title}</h2>
-              <div className="ps-card-device" aria-hidden="true">
-                <span />
-                <i />
-                <b />
-              </div>
-              <div>
-                <strong>{card.headline}</strong>
+              <div className="ps-cap-copy">
+                <h2>
+                  {card.label ? <span>{card.label}</span> : null}
+                  {card.title}
+                </h2>
                 <ul>
                   {card.bullets.map((bullet) => (
                     <li key={bullet}>{bullet}</li>
                   ))}
                 </ul>
               </div>
+              <CapabilityIllustration type={card.illustration} index={index} />
             </article>
           ))}
         </div>
@@ -186,6 +184,68 @@ export default function ProductServicesPage({ searchParams }) {
       </section>
       </div>
     </>
+  );
+}
+
+function CapabilityIllustration({ type, index }) {
+  return (
+    <div className={`ps-card-illustration ps-illustration-${type}`} style={{ "--float-delay": `${index * 0.35}s` }} aria-hidden="true">
+      {type === "sync" ? (
+        <>
+          <span className="ps-illus-ground" />
+          <span className="ps-illus-sheet ps-illus-sheet-left" />
+          <span className="ps-illus-sheet ps-illus-sheet-right" />
+          <span className="ps-illus-bars">
+            <i />
+            <i />
+            <i />
+            <i />
+            <i />
+          </span>
+          <span className="ps-illus-person" />
+        </>
+      ) : null}
+      {type === "eform" ? (
+        <>
+          <span className="ps-illus-ground" />
+          <span className="ps-illus-cloud" />
+          <span className="ps-illus-tablet">
+            <i />
+            <b />
+            <em />
+          </span>
+          <span className="ps-illus-pen" />
+          <span className="ps-illus-person ps-illus-person-left" />
+          <span className="ps-illus-person ps-illus-person-right" />
+        </>
+      ) : null}
+      {type === "archive" ? (
+        <>
+          <span className="ps-illus-ground" />
+          <span className="ps-illus-cloud ps-illus-cloud-large" />
+          <span className="ps-illus-server">
+            <i />
+            <i />
+            <i />
+          </span>
+          <span className="ps-illus-paper" />
+          <span className="ps-illus-lens" />
+          <span className="ps-illus-person ps-illus-person-right" />
+        </>
+      ) : null}
+      {type === "invite" ? (
+        <>
+          <span className="ps-illus-ground" />
+          <span className="ps-illus-robot">
+            <i />
+            <b />
+          </span>
+          <span className="ps-illus-envelope" />
+          <span className="ps-illus-id-card" />
+          <span className="ps-illus-person ps-illus-person-right" />
+        </>
+      ) : null}
+    </div>
   );
 }
 

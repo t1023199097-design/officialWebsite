@@ -5,28 +5,40 @@ export const productServicesSections = [
     subtitle: "保單管理更智能，投保更省心",
     cards: [
       {
-        title: "展業",
-        headline: "展業效率提升",
+        number: "1",
+        label: "AI",
+        title: "保單同步",
+        headline: "AI 保單同步",
         accent: "green",
-        bullets: ["計劃書生成", "產品比較", "保費試算"]
+        illustration: "sync",
+        bullets: ["每日同步保單資料&狀態", "及時提醒數據差異", "告別人工繁瑣操作"]
       },
       {
-        title: "經營管理提效",
-        headline: "經營管理提效",
+        number: "2",
+        label: "Eform",
+        title: "無紙化投保",
+        headline: "Eform 無紙化投保",
         accent: "mint",
-        bullets: ["新單跟進", "保單服務", "客戶追蹤"]
+        illustration: "eform",
+        bullets: ["預填電子投保表單", "導出一系列簽單文件", "資料一鍵同步保司簽單系統"]
       },
       {
-        title: "流轉協同與數據賦能",
-        headline: "流程協同與數據賦能",
+        number: "3",
+        label: "",
+        title: "合規資料庫",
+        headline: "合規資料庫",
         accent: "amber",
-        bullets: ["資料同步", "任務提醒", "數據看板"]
+        illustration: "archive",
+        bullets: ["多類型文件分類存儲", "用戶實時在線預覽", "預覽數據統計與導出Report"]
       },
       {
-        title: "長期服務支持",
-        headline: "長期服務支持",
+        number: "4",
+        label: "",
+        title: "邀約神器",
+        headline: "邀約神器",
         accent: "violet",
-        bullets: ["服務留痕", "續保提醒", "佣金核對"]
+        illustration: "invite",
+        bullets: ["OCR自動讀取證件信息", "AI智能提交保單申請", "VIP邀約概要聯動推送"]
       }
     ]
   },
