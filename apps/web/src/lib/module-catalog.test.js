@@ -16,6 +16,7 @@ const path = require("node:path");
     marketScaleContent,
     serviceCapabilities
   } = await import("./site-content.mjs");
+  const { productServicesSections } = await import("./product-services-content.mjs");
 
   assert.deepEqual(moduleCategories, ["content", "support", "tools"]);
   assert.equal(moduleCatalog.length, 3);
@@ -86,6 +87,11 @@ const path = require("node:path");
   assert.equal(homeShowcaseSections.every((item) => item.points.length === 4), true);
   assert.equal(homeShowcaseSections.every((item) => item.details.length === 3), true);
   assert.equal(homeShowcaseSections.every((item) => item.motionLabel), true);
+  assert.equal(productServicesSections[0].title, "產品功能服務升級");
+  assert.equal(productServicesSections.length >= 6, true);
+  assert.equal(productServicesSections.some((section) => section.title.includes("香港保險中介市場")), true);
+  assert.equal(productServicesSections.some((section) => section.title.includes("客戶資源")), true);
+  assert.equal(productServicesSections.some((section) => section.title.includes("每月產值")), true);
 
   const cssPath = path.join(process.cwd(), "app/globals.css");
   const css = fs.readFileSync(cssPath, "utf8");
