@@ -70,7 +70,7 @@ const path = require("node:path");
     homeAnchorNav.map((item) => item.href),
     ["/", "/#brand-functions", "/#market-scale", "/#content-service", "/#about-lifeBee", "/#contact-lifeBee"]
   );
-  assert.equal(homeFeaturePreview.title, "功能服務");
+  assert.equal(homeFeaturePreview.title, "快人一步 數碼保險化");
   assert.equal(homeFeaturePreview.cards.length, 4);
   assert.equal(homeFeaturePreview.phoneGroups.length, 6);
   const pagePath = path.join(process.cwd(), "app/page.js");

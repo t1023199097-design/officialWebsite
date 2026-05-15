@@ -244,7 +244,7 @@ export const homeAnchorNav = [
 
 export const homeFeaturePreview = {
   eyebrow: "Function Service",
-  title: "功能服務",
+  title: "快人一步 數碼保險化",
   cards: [
     { value: "1,132,344", label: "保費統計" },
     { value: "3,808,007.85", label: "保單金額" },
