@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Suspense } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -12,7 +13,9 @@ export default function RootLayout({ children }) {
     <html lang="zh-Hant">
       <body>
         <div className="page-shell">
-          <SiteHeader />
+          <Suspense fallback={null}>
+            <SiteHeader />
+          </Suspense>
           <main>{children}</main>
           <SiteFooter />
         </div>

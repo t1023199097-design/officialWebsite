@@ -4,10 +4,12 @@ const path = require("node:path");
 
 (async () => {
   const { moduleCatalog, moduleCategories, getModuleBySlug } = await import("./module-catalog.mjs");
+  const { calculateRoiProjection } = await import("./roi-calculator.mjs");
   const {
     contactContent,
     demoHomeContent,
     getDemoHomeContent,
+    getSiteNavigation,
     getInsightBySlug,
     homeAnchorNav,
     homeFeaturePreview,
@@ -16,7 +18,7 @@ const path = require("node:path");
     marketScaleContent,
     serviceCapabilities
   } = await import("./site-content.mjs");
-  const { productServicesSections } = await import("./product-services-content.mjs");
+  const { getProductServicesSections, productServicesSections } = await import("./product-services-content.mjs");
 
   assert.deepEqual(moduleCategories, ["content", "support", "tools"]);
   assert.equal(moduleCatalog.length, 3);
@@ -50,6 +52,8 @@ const path = require("node:path");
   assert.equal(getDemoHomeContent("zh-Hans").hero.sloganMain, "客户至上，服务为先");
   assert.equal(getDemoHomeContent("en").hero.sloganMain, "Customer first, service first");
   assert.equal(getDemoHomeContent("missing").hero.sloganMain, demoHomeContent.hero.sloganMain);
+  assert.equal(getSiteNavigation("zh-Hans").demoCta, "预约演示");
+  assert.equal(getSiteNavigation("en").links[0].label, "Home");
   assert.equal(demoHomeContent.motion.gradientSpeed, "4.2s");
   assert.deepEqual(
     demoHomeContent.pillarThemes.map((theme) => theme.key),
@@ -89,9 +93,26 @@ const path = require("node:path");
   assert.equal(homeShowcaseSections.every((item) => item.motionLabel), true);
   assert.equal(productServicesSections[0].title, "產品功能服務升級");
   assert.equal(productServicesSections.length >= 6, true);
-  assert.equal(productServicesSections.some((section) => section.title.includes("香港保險中介市場")), true);
-  assert.equal(productServicesSections.some((section) => section.title.includes("客戶資源")), true);
-  assert.equal(productServicesSections.some((section) => section.title.includes("每月產值")), true);
+  assert.equal(productServicesSections.some((section) => section.eyebrow === "市場規模"), true);
+  assert.equal(productServicesSections.some((section) => section.title.includes("新加坡與亞太")), true);
+  assert.equal(productServicesSections.some((section) => section.eyebrow === "港險資訊一覽"), true);
+  assert.equal(productServicesSections.some((section) => section.eyebrow === "ROI計算器"), true);
+  assert.equal(productServicesSections.some((section) => section.eyebrow === "預約演示 / 聯絡我們"), true);
+  assert.equal(productServicesSections.some((section) => section.contacts?.some((item) => item.value === "5575 1661")), true);
+  assert.equal(getProductServicesSections("zh-Hans")[0].title, "产品功能服务升级");
+  assert.equal(getProductServicesSections("en")[5].eyebrow, "Book a Demo / Contact Us");
+
+  const roiProjection = calculateRoiProjection({
+    monthlyPremium: 5000,
+    years: 10,
+    expectedAnnualReturn: 6,
+    protectionMultiple: 8
+  });
+  assert.equal(roiProjection.totalPremium, 600000);
+  assert.equal(roiProjection.projectedValue, 819397);
+  assert.equal(roiProjection.projectedGain, 219397);
+  assert.equal(roiProjection.roiPercent, 36.57);
+  assert.equal(roiProjection.protectionValue, 4800000);
 
   const cssPath = path.join(process.cwd(), "app/globals.css");
   const css = fs.readFileSync(cssPath, "utf8");

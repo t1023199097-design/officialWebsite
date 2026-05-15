@@ -242,6 +242,42 @@ export const homeAnchorNav = [
   { href: "/#contact-lifeBee", label: "聯絡我們" }
 ];
 
+const localizedNavigation = {
+  "zh-Hant": {
+    demoCta: "預約演示",
+    languageLabel: "語言切換",
+    links: homeAnchorNav
+  },
+  "zh-Hans": {
+    demoCta: "预约演示",
+    languageLabel: "语言切换",
+    links: [
+      { href: "/?lang=zh-Hans", label: "首页" },
+      { href: "/?lang=zh-Hans#brand-functions", label: "品牌功能" },
+      { href: "/?lang=zh-Hans#market-scale", label: "市场规模" },
+      { href: "/?lang=zh-Hans#content-service", label: "内容服务" },
+      { href: "/?lang=zh-Hans#about-lifeBee", label: "关于我们" },
+      { href: "/?lang=zh-Hans#contact-lifeBee", label: "联系我们" }
+    ]
+  },
+  en: {
+    demoCta: "Book a demo",
+    languageLabel: "Language switcher",
+    links: [
+      { href: "/?lang=en", label: "Home" },
+      { href: "/?lang=en#brand-functions", label: "Capabilities" },
+      { href: "/?lang=en#market-scale", label: "Market" },
+      { href: "/?lang=en#content-service", label: "Content" },
+      { href: "/?lang=en#about-lifeBee", label: "About" },
+      { href: "/?lang=en#contact-lifeBee", label: "Contact" }
+    ]
+  }
+};
+
+export function getSiteNavigation(locale = "zh-Hant") {
+  return localizedNavigation[normalizeLocale(locale)];
+}
+
 export const homeFeaturePreview = {
   eyebrow: "Function Service",
   title: "快人一步 數碼保險化",

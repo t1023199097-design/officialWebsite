@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { productServicesSections } from "@/lib/product-services-content.mjs";
+import { RoiCalculator } from "@/components/roi-calculator";
+import { getProductServicesSections } from "@/lib/product-services-content.mjs";
 import {
   getDemoHomeContent,
   homeFeaturePreview,
@@ -7,8 +8,8 @@ import {
 } from "@/lib/site-content.mjs";
 
 export default function ProductServicesPage({ searchParams }) {
-  const [hero, market, member, infra, monthly, ai] = productServicesSections;
   const locale = normalizeLocale(searchParams?.lang);
+  const [hero, market, member, infra, monthly, ai] = getProductServicesSections(locale);
   const demoHomeContent = getDemoHomeContent(locale);
   const languageSuffix = locale === "zh-Hant" ? "" : `?lang=${locale}`;
 
@@ -92,21 +93,27 @@ export default function ProductServicesPage({ searchParams }) {
         <p className="ps-lede">{market.description}</p>
         <div className="ps-market-board">
           <div className="ps-blue-card">
-            <span>LifeBee</span>
-            <strong>Broker OS for Hong Kong</strong>
-            <p>For broker operations, policy service and commission workflow.</p>
+            <span>{market.panel.label}</span>
+            <strong>{market.panel.title}</strong>
+            <p>{market.panel.body}</p>
+            <em>{market.panel.meta}</em>
           </div>
           {market.stats.map((stat) => (
             <div className="ps-stat" key={stat.value}>
+              <span className="ps-stat-region">{stat.region}</span>
               <strong>{stat.value}</strong>
-              <span>{stat.label}</span>
+              <span className="ps-stat-label">{stat.label}</span>
+              <div className="ps-share-track" aria-label={`${stat.region} market share ${stat.value}`}>
+                <i style={{ "--share": `${stat.share}%` }} />
+              </div>
+              <small>{stat.trend} YoY 增長示意</small>
             </div>
           ))}
         </div>
         <div className="ps-note-row">
-          <span>服務伙伴</span>
-          <span>覆蓋地區</span>
-          <span>數據接口</span>
+          {market.notes.map((note) => (
+            <span key={note}>{note}</span>
+          ))}
         </div>
       </section>
 
@@ -116,20 +123,7 @@ export default function ProductServicesPage({ searchParams }) {
           <h2>{member.title}</h2>
           <p className="ps-lede">{member.description}</p>
         </div>
-        <div className="ps-member-layout">
-          <div className="ps-list-card">
-            <strong>內容服務</strong>
-            {member.leftList.map((item) => (
-              <span key={item}>{item}</span>
-            ))}
-          </div>
-          <div className="ps-flow-dot" aria-hidden="true">↻</div>
-          <div className="ps-action-panel">
-            <span>Smart Concierge</span>
-            <strong>{member.rightTitle}</strong>
-            <p>{member.rightBody}</p>
-          </div>
-        </div>
+        <RoiCalculator locale={locale} />
       </section>
 
       <section className="ps-section ps-infra">
@@ -143,8 +137,13 @@ export default function ProductServicesPage({ searchParams }) {
           </ul>
         </div>
         <aside className="ps-side-panel">
+          <strong>{infra.panelTitle}</strong>
           {infra.panel.map((item) => (
-            <span key={item}>{item}</span>
+            <a href={item.href} key={item.title} rel="noreferrer" target="_blank">
+              <small>{item.category}</small>
+              <span>{item.title}</span>
+              <em>{item.meta}</em>
+            </a>
           ))}
         </aside>
       </section>
@@ -174,12 +173,30 @@ export default function ProductServicesPage({ searchParams }) {
           <div className="ps-kicker">{ai.eyebrow}</div>
           <h2>{ai.title}</h2>
           <p className="ps-lede">{ai.description}</p>
+          <div className="ps-contact-actions">
+            <Link href="/demo">預約演示</Link>
+            <a href="mailto:info@beefintech.hk">聯絡我們</a>
+          </div>
         </div>
         <div className="ps-ai-card">
-          <span>AI · 代理服務</span>
-          <strong>{ai.quote}</strong>
-          <p>{ai.note}</p>
-          <Link href="/demo">預約演示</Link>
+          <span>{ai.contactTitle}</span>
+          <div className="ps-contact-list">
+            {ai.contacts.map((item) => {
+              const content = (
+                <>
+                  <small>{item.label}</small>
+                  <strong>{item.value}</strong>
+                </>
+              );
+              return item.href ? (
+                <a href={item.href} key={item.label} rel={item.href.startsWith("http") ? "noreferrer" : undefined} target={item.href.startsWith("http") ? "_blank" : undefined}>
+                  {content}
+                </a>
+              ) : (
+                <div key={item.label}>{content}</div>
+              );
+            })}
+          </div>
         </div>
       </section>
       </div>
