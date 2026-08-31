@@ -4,10 +4,10 @@ BeeFintech AI 实战赛官网改造项目单仓骨架。
 
 ## Stack
 
-- Frontend: `Next.js` in [apps/web](/D:/VsCodeWorkSpace/officialWebsite/apps/web)
-- Backend: `Spring Boot` in [apps/api](/D:/VsCodeWorkSpace/officialWebsite/apps/api)
-- Docs: [docs](/D:/VsCodeWorkSpace/officialWebsite/docs)
-- Infra: [docker-compose.yml](/D:/VsCodeWorkSpace/officialWebsite/docker-compose.yml), [infra/mysql/init/001-init.sql](/D:/VsCodeWorkSpace/officialWebsite/infra/mysql/init/001-init.sql)
+- Frontend: `Next.js` in [apps/web](apps/web)
+- Backend: `Spring Boot` in [apps/api](apps/api)
+- Docs: [docs](docs)
+- Infra: [docker-compose.yml](docker-compose.yml), [infra/mysql/init/001-init.sql](infra/mysql/init/001-init.sql)
 
 ## Repository Layout
 
